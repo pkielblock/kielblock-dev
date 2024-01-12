@@ -17,7 +17,7 @@ export default function Home() {
         <section>
           <nav className='py-10 flex justify-between'>
             <h1 className='text-xl dark:text-white'>
-              <a href='https://kielblock.dev' >kielblockdev</a>
+              <a href='https://kielblock.dev' >kielblock.dev</a>
             </h1>
             <ul className='flex items-center'>
               <li>
@@ -42,7 +42,7 @@ export default function Home() {
               Hey 👋 I am a passionate developer dedicated to continuous improvement and growth in my field. 
               Each day presents a new opportunity to enhance my skills and contribute to innovative solutions. 😎
             </p>
-            <div className='text-5xl flex justify-center gap-16 py-10 text-gray-950  dark:text-white'>
+            <div className='text-5xl flex justify-center gap-16 py-20 text-gray-950  dark:text-white'>
               <a href='https://github.com/pkielblock' target='_blank'><AiFillGithub className='hover:scale-110 transition duration-250 '/></a>
               <a href='https://www.linkedin.com/in/pedrokielblock/' target='_blank'><AiFillLinkedin className='hover:scale-110 transition duration-250'/></a>
               <a href='mailto:pedro@kielblock.dev' target='_blank'><AiFillMail className='hover:scale-110 transition duration-250'/></a>
