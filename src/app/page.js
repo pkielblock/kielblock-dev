@@ -56,7 +56,7 @@ export default function Home() {
               Background
             </h3>
             <p className='text-md py-2 leading-8 text-gray-600 md:text-xl md:leading-10 max-w-xl mx-auto  dark:text-gray-300'>
-              I hold a diploma in Systems Development from ETEC Lauro Gomes and a degree in Analysis and Systems Development. 
+              I hold a diploma in Systems Development from ETEC Lauro Gomes and a degree in Analysis and Systems Development from FATEC São Caetano do Sul - Antonio Russo. 
               This dual background provides a comprehensive understanding of the technical and theoretical aspects of the field. 
               My fluency in English is certified by <span className='font-bold  dark:text-white'>B2 First</span> and <span className='font-bold  dark:text-white'>C1 Advanced</span> qualifications, enabling effective communication in diverse professional settings. 
               Currently, I am leveraging these skills in my role as a Systems Analyst at  <a className='font-bold text-blue-400 hover:underline hover:text-blue-700' href='https://www.rethinkingworks.com/' target='_blank'>ReThinkingWorks</a>, where I engage in a range of innovative projects, 
