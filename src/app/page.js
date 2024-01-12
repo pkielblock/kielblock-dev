@@ -23,12 +23,6 @@ export default function Home() {
               <li>
                   <a href='https://drive.google.com/uc?export=download&id=1_dbdBVcPezmVT1ccUFJHedXzFzxMqGmu' download="pedro_resume.pdf" class="hover:underline me-4 md:me-6 dark:text-white">Resume</a>
               </li>
-              <li>
-                  <a href="#background" class="hover:underline me-4 md:me-6 dark:text-white">Background</a>
-              </li>
-              <li>
-                  <a href="#stacks" class="hover:underline me-4 md:me-6 dark:text-white">Stacks</a>
-              </li>
               <li >
                 <MdDarkMode onClick={() => setDarkMode(!darkMode)} className='hover:scale-110 transition duration-250 cursor-pointer text-2xl dark:text-white'/>
               </li>
