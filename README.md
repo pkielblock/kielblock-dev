@@ -1,4 +1,4 @@
-# kielblockdev 💻
+# kielblock.dev 💻
 
 In this repository you'll find my personal website.
 
