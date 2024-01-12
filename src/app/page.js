@@ -13,7 +13,7 @@ export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
   return (
     <div className={darkMode ? 'dark' : ''}>
-      <main className='bg-white px-10 md:px-20 lg-px-40 dark:bg-gray-950'>
+      <main id='home' className='bg-white px-10 md:px-20 lg-px-40 dark:bg-gray-950'>
         <section>
           <nav className='py-10 flex justify-between'>
             <h1 className='text-xl font-jetbrains dark:text-white'>
@@ -49,7 +49,7 @@ export default function Home() {
         </section>
         <section>
           <div className='mb-10'>
-            <h3 className='text-3xl py-1 mb-5 text-center  dark:text-white'>
+            <h3 id='background' className='text-3xl py-1 mb-5 text-center  dark:text-white'>
               Background
             </h3>
             <p className='text-md py-2 leading-8 text-gray-600 md:text-xl md:leading-10 max-w-xl mx-auto  dark:text-gray-300'>
@@ -62,7 +62,7 @@ export default function Home() {
             </p>
           </div>
           <div>
-            <h3 className='text-3xl py-1 mb-5 text-center  dark:text-white'>
+            <h3 id='stacks' className='text-3xl py-1 mb-5 text-center  dark:text-white'>
               Stacks
             </h3>
             <div className='text-5xl flex justify-center gap-10 py-3 text-gray-950  dark:text-white'>
@@ -79,6 +79,25 @@ export default function Home() {
             </p>
           </div>
         </section>
+
+        <footer class="bg-white rounded-lg dark:bg-gray-950">
+            <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+              <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="https://kielblock.dev/" class="hover:underline">kielblockdev™</a>
+            </span>
+            <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+                <li>
+                    <a href="#home" class="hover:underline me-4 md:me-6">Home</a>
+                </li>
+                <li>
+                    <a href="#background" class="hover:underline me-4 md:me-6">Background</a>
+                </li>
+                <li>
+                    <a href="#stacks" class="hover:underline me-4 md:me-6">Stacks</a>
+                </li>
+            </ul>
+            </div>
+        </footer>
+
       </main>
     </div>
   );
