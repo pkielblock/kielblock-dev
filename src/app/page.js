@@ -16,8 +16,8 @@ export default function Home() {
       <main id='home' className='bg-white px-10 md:px-20 lg-px-40 dark:bg-gray-950'>
         <section>
           <nav className='py-10 flex justify-between'>
-            <h1 className='text-xl font-jetbrains dark:text-white'>
-              <a href='https://kielblock.dev' >kielblockdev💻</a>
+            <h1 className='text-xl dark:text-white'>
+              <a href='https://kielblock.dev' >kielblockdev</a>
             </h1>
             <ul className='flex items-center'>
               <li>
