@@ -10,7 +10,7 @@ import { useState } from 'react';
 import { MdDarkMode } from "react-icons/md";
 
 export default function Home() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
   return (
     <div className={darkMode ? 'dark' : ''}>
       <main id='home' className='bg-white px-10 md:px-20 lg-px-40 dark:bg-gray-950'>
