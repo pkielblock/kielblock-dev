@@ -21,7 +21,7 @@ export default function Home() {
             </h1>
             <ul className='flex items-center'>
               <li>
-                  <a href="../../public/resume.pdf" download="resume.pdf" class="hover:underline me-4 md:me-6 dark:text-white">Resume</a>
+                  <a href='https://drive.google.com/uc?export=download&id=1_dbdBVcPezmVT1ccUFJHedXzFzxMqGmu' download="pedro_resume.pdf" class="hover:underline me-4 md:me-6 dark:text-white">Resume</a>
               </li>
               <li>
                   <a href="#background" class="hover:underline me-4 md:me-6 dark:text-white">Background</a>
