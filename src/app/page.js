@@ -17,9 +17,18 @@ export default function Home() {
         <section>
           <nav className='py-10 flex justify-between'>
             <h1 className='text-xl font-jetbrains dark:text-white'>
-              kielblockdev💻
+              <a href='https://kielblock.dev' >kielblockdev💻</a>
             </h1>
             <ul className='flex items-center'>
+              <li>
+                  <a href="../../public/resume.pdf" download="resume.pdf" class="hover:underline me-4 md:me-6 dark:text-white">Resume</a>
+              </li>
+              <li>
+                  <a href="#background" class="hover:underline me-4 md:me-6 dark:text-white">Background</a>
+              </li>
+              <li>
+                  <a href="#stacks" class="hover:underline me-4 md:me-6 dark:text-white">Stacks</a>
+              </li>
               <li >
                 <MdDarkMode onClick={() => setDarkMode(!darkMode)} className='hover:scale-110 transition duration-250 cursor-pointer text-2xl dark:text-white'/>
               </li>
