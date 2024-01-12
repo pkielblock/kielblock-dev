@@ -71,7 +71,7 @@ export default function Home() {
               <div className='p-1 hover:scale-110 transition duration-250'><DiMysql/><span className='text-sm pl-1'>MySQL</span></div>
               <div className='p-1 hover:scale-110 transition duration-250'><DiLinux/><span className='text-sm pl-2'>Linux</span></div>
             </div>
-            <p className='text-md py-2 leading-8 text-gray-600 md:text-xl max-w-xl mx-auto md:leading-10  dark:text-gray-300'>
+            <p className='text-md mb-10 py-2 leading-8 text-gray-600 md:text-xl max-w-xl mx-auto md:leading-10  dark:text-gray-300'>
               I specialize in Web Development, with a particular emphasis on <span className='font-bold  dark:text-white'>backend</span> technologies using <span className='font-bold  dark:text-white'>Java</span> and <span className='font-bold  dark:text-white'>Spring Boot</span>. 
               While my primary expertise lies in this area, I maintain a flexible and expansive approach to learning. 
               I am continuously exploring and studying various other areas and programming languages, ensuring a well-rounded and adaptable skill set in the ever-evolving field 
@@ -79,12 +79,11 @@ export default function Home() {
             </p>
           </div>
         </section>
-
-        <footer class="bg-white rounded-lg dark:bg-gray-950">
+        <footer class="bg-white dark:bg-gray-950">
             <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
-              <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="https://kielblock.dev/" class="hover:underline">kielblockdev™</a>
+              <span class="text-sm text-gray-600 sm:text-center dark:text-gray-300">© 2024 <a href="https://kielblock.dev/" class="hover:underline">kielblockdev™</a>
             </span>
-            <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+            <ul class="flex flex-wrap  items-center mt-3 text-sm font-medium text-gray-600 dark:text-gray-300 sm:mt-0">
                 <li>
                     <a href="#home" class="hover:underline me-4 md:me-6">Home</a>
                 </li>
@@ -97,7 +96,6 @@ export default function Home() {
             </ul>
             </div>
         </footer>
-
       </main>
     </div>
   );
