@@ -33,7 +33,7 @@ export default function Home() {
               Pedro Kielblock
             </h2>
             <h3 className='text-2xl py-2 md:text-3xl dark:text-white'>
-              Backend Developer
+              Software Developer
             </h3>
             <p className='text-md py-5 leading-8 text-gray-600 md:text-xl max-w-xl mx-auto md:leading-10  dark:text-gray-300'>
               Hey 👋 I am a passionate developer dedicated to continuous improvement and growth in my field. 
