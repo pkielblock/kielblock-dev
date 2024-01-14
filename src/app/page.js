@@ -8,9 +8,12 @@ import { FaJava } from "react-icons/fa";
 import { BiLogoSpringBoot } from "react-icons/bi";
 import { useState } from 'react';
 import { MdDarkMode } from "react-icons/md";
+import { MdLightMode } from "react-icons/md";
+import { Typewriter } from 'react-simple-typewriter';
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState(true);
+
   return (
     <div className={darkMode ? 'dark' : ''}>
       <main id='home' className='bg-white px-10 md:px-20 lg-px-40 dark:bg-gray-950'>
@@ -21,10 +24,15 @@ export default function Home() {
             </h1>
             <ul className='flex items-center'>
               <li>
-                  <a href='https://drive.google.com/uc?export=download&id=1_dbdBVcPezmVT1ccUFJHedXzFzxMqGmu' download="pedro_resume.pdf" class="hover:underline me-4 md:me-6 dark:text-white">Resume</a>
+                  <a href='https://drive.google.com/uc?export=download&id=1_dbdBVcPezmVT1ccUFJHedXzFzxMqGmu' download="pedro_resume.pdf" class="hover:underline rounded-sm me-4 md:me-6 dark:text-white">Download Resume</a>
               </li>
               <li >
-                <MdDarkMode onClick={() => setDarkMode(!darkMode)} className='hover:scale-110 transition duration-250 cursor-pointer text-2xl dark:text-white'/>
+                {
+                  darkMode ? 
+                  <MdDarkMode onClick={() => setDarkMode(!darkMode)} className='hover:scale-110 transition duration-250 cursor-pointer text-2xl dark:text-white'/> 
+                  : 
+                  <MdLightMode onClick={() => setDarkMode(!darkMode)} className='hover:scale-110 transition duration-250 cursor-pointer text-2xl'/>
+                } 
               </li>
             </ul>
           </nav>
@@ -36,7 +44,13 @@ export default function Home() {
               Pedro Kielblock
             </h2>
             <h3 className='text-2xl py-2 md:text-3xl dark:text-white'>
-              Software Developer
+               
+              <Typewriter
+                words={['Software Developer']}
+                cursor
+                cursorStyle='_'
+                typeSpeed={100}
+              />
             </h3>
             <p className='text-md py-5 leading-8 text-gray-600 md:text-xl max-w-xl mx-auto md:leading-10  dark:text-gray-300'>
               Hey 👋 I am a passionate developer dedicated to continuous improvement and growth in my field. 
