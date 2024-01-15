@@ -29,9 +29,9 @@ export default function Home() {
               <li >
                 {
                   darkMode ? 
-                  <MdDarkMode onClick={() => setDarkMode(!darkMode)} className='hover:scale-110 transition duration-250 cursor-pointer text-2xl dark:text-white'/> 
+                  <MdLightMode onClick={() => setDarkMode(!darkMode)} className='hover:scale-110 transition duration-250 cursor-pointer text-2xl dark:text-white'/> 
                   : 
-                  <MdLightMode onClick={() => setDarkMode(!darkMode)} className='hover:scale-110 transition duration-250 cursor-pointer text-2xl'/>
+                  <MdDarkMode onClick={() => setDarkMode(!darkMode)} className='hover:scale-110 transition duration-250 cursor-pointer text-2xl'/>
                 } 
               </li>
             </ul>
