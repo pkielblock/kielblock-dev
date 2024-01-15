@@ -79,8 +79,8 @@ export default function Home() {
             </p>
           </div>
           <div>
-            <h3 id='stacks' className='text-3xl py-1 mb-5 text-center  dark:text-white'>
-              Stacks
+            <h3 id='stack' className='text-3xl py-1 mb-5 text-center  dark:text-white'>
+              Stack
             </h3>
             <div className='text-5xl flex justify-center gap-10 py-3 text-gray-950  dark:text-white'>
               <div className='p-1 hover:scale-110 transition duration-250'><FaJava/><span className='pl-2 text-sm'>Java</span></div>
@@ -108,7 +108,7 @@ export default function Home() {
                     <a href="#background" class="hover:underline me-4 md:me-6">Background</a>
                 </li>
                 <li>
-                    <a href="#stacks" class="hover:underline me-4 md:me-6">Stacks</a>
+                    <a href="#stack" class="hover:underline me-4 md:me-6">Stack</a>
                 </li>
             </ul>
             </div>
