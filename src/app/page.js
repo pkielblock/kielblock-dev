@@ -83,12 +83,12 @@ export default function Home() {
               Systems Development from FATEC São Caetano do Sul - Antonio Russo. 
               This dual background provides a comprehensive understanding of the technical and theoretical 
               aspects of the field. 
-              My fluency in English is certified by <span className='font-bold  dark:text-white'>B2 First</span> 
+              My fluency in English is certified by <span className='font-bold  dark:text-white'>B2 First </span> 
               and <span className='font-bold  dark:text-white'>C1 Advanced</span> qualifications, 
               enabling effective communication in diverse professional settings. 
               Currently, I am leveraging these skills in my role as a Systems Analyst at  
               <a className='font-bold text-blue-400 hover:underline hover:text-blue-700' 
-              href='https://www.rethinkingworks.com/' target='_blank'>ReThinkingWorks</a>, 
+              href='https://www.rethinkingworks.com/' target='_blank'> ReThinkingWorks</a>, 
               where I engage in a range of innovative projects, 
               applying my technical expertise and analytical skills to develop and optimize systems, 
               keeping pace with the rapidly evolving technological landscape.
