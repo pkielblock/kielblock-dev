@@ -53,7 +53,7 @@ export default function Home() {
                 words={['Software Developer']}
                 cursor
                 cursorStyle='_'
-                typeSpeed={300}
+                typeSpeed={200}
               />
             </h3>
             <p className='text-md py-5 leading-8 text-gray-600 md:text-xl max-w-xl mx-auto md:leading-10  
