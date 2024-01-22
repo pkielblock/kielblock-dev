@@ -112,13 +112,12 @@ export default function Home() {
 								C1 Advanced
 							</a>{" "}
 							qualifications, enabling effective communication in diverse professional settings. Currently, I am
-							leveraging these skills in my role as a Systems Analyst at
+							leveraging these skills in my role as a Systems Analyst at{" "}
 							<a
 								className="font-bold text-blue-400 hover:underline hover:text-blue-700"
 								href="https://www.rethinkingworks.com/"
 								target="_blank"
 							>
-								{" "}
 								ReThinkingWorks
 							</a>
 							, where I engage in a range of innovative projects, applying my technical expertise and analytical skills
