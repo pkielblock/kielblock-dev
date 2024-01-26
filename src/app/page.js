@@ -27,7 +27,7 @@ export default function Home() {
 								<a
 									href="https://drive.google.com/uc?export=download&id=1_dbdBVcPezmVT1ccUFJHedXzFzxMqGmu"
 									download="pedro_resume.pdf"
-									class="hover:underline bg-blue-400 p-1 rounded-sm me-4 md:me-6 
+									className="hover:underline bg-blue-400 p-1 rounded-sm me-4 md:me-6 
                   dark:text-white"
 								>
 									Resume
@@ -97,7 +97,7 @@ export default function Home() {
 							Development from FATEC São Caetano do Sul - Antonio Russo. This dual background provides a comprehensive
 							understanding of the technical and theoretical aspects of the field. My fluency in English is certified by{" "}
 							<a
-								className="font-bold  dark:text-white hover:underline"
+								className="font-bold  dark:text-white underline hover:text-black dark:hover:text-gray-300"
 								href="https://www.cambridgeenglish.org/exams-and-tests/first/"
 								target="_blank"
 							>
@@ -105,7 +105,7 @@ export default function Home() {
 							</a>{" "}
 							and{" "}
 							<a
-								className="font-bold  dark:text-white hover:underline"
+								className="font-bold  dark:text-white underline hover:text-black dark:hover:text-gray-300"
 								href="https://www.cambridgeenglish.org/exams-and-tests/advanced/"
 								target="_blank"
 							>
@@ -114,7 +114,7 @@ export default function Home() {
 							qualifications, enabling effective communication in diverse professional settings. Currently, I am
 							leveraging these skills in my role as a Systems Analyst at{" "}
 							<a
-								className="font-bold text-blue-400 hover:underline hover:text-blue-700"
+								className="font-bold text-blue-400 underline hover:text-blue-500"
 								href="https://www.rethinkingworks.com/"
 								target="_blank"
 							>
@@ -165,26 +165,26 @@ export default function Home() {
 						</p>
 					</div>
 				</section>
-				<footer class="bg-white dark:bg-gray-950">
-					<div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
-						<span class="text-sm text-gray-600 sm:text-center dark:text-gray-300">
-							<a href="https://kielblock.dev/" class="hover:underline">
+				<footer className="bg-white dark:bg-gray-950">
+					<div className="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+						<span className="text-sm text-gray-600 sm:text-center dark:text-gray-300">
+							<a href="https://kielblock.dev/" className="hover:underline">
 								kielblock.dev
 							</a>
 						</span>
-						<ul class="flex flex-wrap  items-center mt-3 text-sm font-medium text-gray-600 dark:text-gray-300 sm:mt-0">
+						<ul className="flex flex-wrap  items-center mt-3 text-sm font-medium text-gray-600 dark:text-gray-300 sm:mt-0">
 							<li>
-								<a href="#home" class="hover:underline me-4 md:me-6">
+								<a href="#home" className="hover:underline me-4 md:me-6">
 									Home
 								</a>
 							</li>
 							<li>
-								<a href="#background" class="hover:underline me-4 md:me-6">
+								<a href="#background" className="hover:underline me-4 md:me-6">
 									Background
 								</a>
 							</li>
 							<li>
-								<a href="#stack" class="hover:underline me-4 md:me-6">
+								<a href="#stack" className="hover:underline me-4 md:me-6">
 									Stack
 								</a>
 							</li>
