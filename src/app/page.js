@@ -51,7 +51,7 @@ export default function Home() {
 						</ul>
 					</nav>
 					<div className="text-center p-10">
-						<div className="mb-10 relative mx-auto rounded-full w-40 h-40 overflow-hidden md:mb-11">
+						<div className="mb-10 relative mx-auto rounded-full w-60 h-60 overflow-hidden md:mb-11">
 							<Image alt="Profile Picture Featuring Pedro Kielblock" src={profile} />
 						</div>
 						<h2 className="text-4xl py-2 text-blue-400 font-medium md:text-5xl lg:text-6xl">Pedro Kielblock</h2>
