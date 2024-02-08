@@ -2,7 +2,7 @@
 
 import { AiFillLinkedin, AiFillGithub, AiFillMail } from "react-icons/ai";
 import Image from "next/image";
-import profile from "../../public/profile.jpg";
+import profile from "../../public/profile.png";
 import { DiLinux, DiMysql } from "react-icons/di";
 import { FaJava } from "react-icons/fa";
 import { BiLogoSpringBoot } from "react-icons/bi";
