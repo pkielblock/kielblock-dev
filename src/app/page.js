@@ -28,7 +28,7 @@ export default function Home() {
 							<li>
 								<button
 									onClick={toggleModal}
-									className="hover:underline bg-blue-400 p-1 rounded-sm me-4 md:me-6 dark:text-white"
+									className="hover:bg-blue-600 bg-blue-500 p-2.5 rounded-md me-4 md:me-6 text-white"
 								>
 									Resume
 								</button>
