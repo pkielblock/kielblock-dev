@@ -9,6 +9,7 @@ import { FaJava } from "react-icons/fa";
 import { BiLogoSpringBoot } from "react-icons/bi";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
 import { Typewriter } from "react-simple-typewriter";
+import "./globals.css";
 
 export default function Home() {
 	const [darkMode, setDarkMode] = useState(true);
