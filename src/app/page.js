@@ -9,7 +9,6 @@ import { FaJava } from "react-icons/fa";
 import { BiLogoSpringBoot } from "react-icons/bi";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
 import { Typewriter } from "react-simple-typewriter";
-import "./globals.css";
 
 export default function Home() {
 	const [darkMode, setDarkMode] = useState(true);
@@ -53,13 +52,8 @@ export default function Home() {
 						<div className="mb-10 relative mx-auto rounded-full w-60 h-60 overflow-hidden md:mb-11">
 							<Image alt="Profile Picture Featuring Pedro Kielblock" src={profile} />
 						</div>
-						<h2
-							style={{ fontFamily: "JetBrains Mono, Inter" }}
-							className="text-4xl py-2 text-blue-400 font-medium md:text-5xl lg:text-6xl"
-						>
-							Pedro Kielblock
-						</h2>
-						<h3 style={{ fontFamily: "JetBrains Mono, Inter" }} className="text-2xl py-2 md:text-3xl dark:text-white">
+						<h2 className="text-4xl py-2 text-blue-400 font-medium md:text-5xl lg:text-6xl">Pedro Kielblock</h2>
+						<h3 className="text-2xl py-2 md:text-3xl dark:text-white">
 							<Typewriter words={["Software Developer"]} cursor cursorStyle="_" typeSpeed={200} />
 						</h3>
 						<p className="text-md py-5 leading-8 text-gray-600 md:text-xl max-w-xl lg:max-w-5xl mx-auto md:leading-10 dark:text-gray-300">
