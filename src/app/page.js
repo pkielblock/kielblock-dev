@@ -21,7 +21,7 @@ export default function Home() {
 			<main id="home" className="bg-white px-10 md:px-20 lg:px-40 dark:bg-black">
 				<section>
 					<nav className="py-10 flex justify-between">
-						<h1 className="pt-2 text-xl dark:text-white hover:underline">
+						<h1 className="p-2 text-lg dark:text-white hover:underline">
 							<a href="https://kielblock.dev">kielblock.dev</a>
 						</h1>
 						<ul className="flex items-center">
@@ -87,7 +87,7 @@ export default function Home() {
 							</button>
 							<h2 className="pb-2 text-xl mb-4 dark:text-white text-center">Resume</h2>
                             <p className="mb-4 dark:text-white text-center pb-2">
-								Click on the desired language to access it.
+								Click on the desired language
 							</p>
                             <hr className="w-20 m-auto pb-4 border-black dark:border-white"></hr>
 							<div className="flex gap-4 justify-center">
