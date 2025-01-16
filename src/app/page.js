@@ -21,14 +21,14 @@ export default function Home() {
 			<main id="home" className="bg-white px-10 md:px-20 lg:px-40 dark:bg-black">
 				<section>
 					<nav className="py-10 flex justify-between">
-						<h1 className="pt-2.5 text-xl dark:text-white hover:underline">
+						<h1 className="pt-2 text-xl dark:text-white hover:underline">
 							<a href="https://kielblock.dev">kielblock.dev</a>
 						</h1>
 						<ul className="flex items-center">
 							<li>
 								<button
 									onClick={toggleModal}
-									className="hover:underline p-2.5 rounded-md me-4 md:me-6 text-black dark:text-white"
+									className="hover:underline p-2 text-lg me-4 md:me-6 text-black dark:text-white"
 								>
 									Resume
 								</button>
@@ -85,9 +85,9 @@ export default function Home() {
 							>
 								×
 							</button>
-							<h2 className="text-xl mb-4 dark:text-white text-center">Resume</h2>
-							<p className="mb-4 dark:text-white text-center pb-2">
-								Here you will find my resume both in Portuguese and English
+							<h2 className="pb-2 text-xl mb-4 dark:text-white text-center">Resume</h2>
+                            <p className="mb-4 dark:text-white text-center pb-2">
+								Click on the desired language to access it.
 							</p>
                             <hr className="w-20 m-auto pb-4 border-black dark:border-white"></hr>
 							<div className="flex gap-4 justify-center">
@@ -96,7 +96,7 @@ export default function Home() {
 									//href="https://drive.google.com/uc?export=download&id=124NFRAQzx51qlAiCS3E_JnrCG3uma6Jz"
 									//download="pedro_resume.pdf"
 									href="https://drive.google.com/file/d/124NFRAQzx51qlAiCS3E_JnrCG3uma6Jz/view"
-									className="text-black hover:bg-black hover:text-white px-4 py-2 w-40 flex-grow text-center dark:text-white dark:hover:bg-white dark:hover:text-black"
+									className="text-black hover:bg-black hover:text-white px-4 py-2 w-25 flex-grow text-center dark:text-white dark:hover:bg-white dark:hover:text-black"
 								>
 									English (US)
 								</a>
@@ -105,7 +105,7 @@ export default function Home() {
 									//href="https://drive.google.com/uc?export=download&id=1RPYDXRMQfARxcS_vjnh0p__eMTjIVR4m"
 									//download="cv_pedro.pdf"
 									href="https://drive.google.com/file/d/1RPYDXRMQfARxcS_vjnh0p__eMTjIVR4m/view"
-									className="text-black hover:bg-black hover:text-white  px-4 py-2 w-40 flex-grow text-center dark:text-white dark:hover:bg-white dark:hover:text-black"
+									className="text-black hover:bg-black hover:text-white  px-4 py-2 w-25 flex-grow text-center dark:text-white dark:hover:bg-white dark:hover:text-black"
 								>
 									Português (BR)
 								</a>
