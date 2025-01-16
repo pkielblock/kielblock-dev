@@ -55,7 +55,7 @@ export default function Home() {
 						<h2 id="name" className="text-2xl py-2 text-black dark:text-white font-medium md:text-4xl lg:text-5xl">
 							Pedro Kielblock
 						</h2>
-						<h3 className="text-1xl py-2 md:text-2xl dark:text-gray-300">
+						<h3 className="text-1xl pt-2 pb-12 md:text-2xl dark:text-gray-300">
 							<Typewriter words={["Software Developer"]} cursor cursorStyle="_" typeSpeed={200} deleteSpeed={100} loop={true}/>
 						</h3>
 						<p className="text-md py-5 leading-8 text-gray-950 md:text-xl max-w-xl lg:max-w-5xl mx-auto md:leading-10 dark:text-gray-200">
