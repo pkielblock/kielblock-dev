@@ -52,10 +52,10 @@ export default function Home() {
 						<div className="mb-10 relative mx-auto rounded-full w-60 h-60 overflow-hidden md:mb-11">
 							<Image alt="Profile Picture Featuring Pedro Kielblock" src={profile}/>
 						</div>
-						<h2 id="name" className="text-4xl py-2  text-black dark:text-white font-medium md:text-5xl lg:text-6xl">
+						<h2 id="name" className="text-2xl py-2 text-black dark:text-white font-medium md:text-4xl lg:text-5xl">
 							Pedro Kielblock
 						</h2>
-						<h3 className="text-2xl py-2 md:text-3xl dark:text-gray-300">
+						<h3 className="text-1xl py-2 md:text-2xl dark:text-gray-300">
 							<Typewriter words={["Software Developer"]} cursor cursorStyle="_" typeSpeed={200} deleteSpeed={100} loop={true}/>
 						</h3>
 						<p className="text-md py-5 leading-8 text-gray-950 md:text-xl max-w-xl lg:max-w-5xl mx-auto md:leading-10 dark:text-gray-200">
@@ -78,7 +78,7 @@ export default function Home() {
 				</section>
 				{isModalOpen && (
 					<div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-40 flex justify-center items-center z-50">
-						<div className="bg-white dark:bg-black outline-double outline-2 outline-black dark:outline-white p-5 shadow-lg relative">
+						<div className="bg-white dark:bg-black outline outline-2 outline-black dark:outline-white p-5 shadow-lg relative">
 							<button
 								onClick={toggleModal}
 								className="absolute top-2 right-2 text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white text-xl"
@@ -87,7 +87,7 @@ export default function Home() {
 							</button>
 							<h2 className="pb-2 text-xl mb-4 dark:text-white text-center">Resume</h2>
                             <p className="mb-4 dark:text-white text-center pb-2">
-								Click on the desired language
+								Click on the desired language.
 							</p>
                             <hr className="w-20 m-auto pb-4 border-black dark:border-white"></hr>
 							<div className="flex gap-4 justify-center">
