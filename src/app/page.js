@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { AiFillLinkedin, AiFillGithub, AiFillMail } from "react-icons/ai";
 import Image from "next/image";
-import profile from "../../public/profile.png";
 import { RiAngularjsLine } from "react-icons/ri";
 import { FaJava } from "react-icons/fa";
 import { BiLogoSpringBoot } from "react-icons/bi";
@@ -50,7 +49,12 @@ export default function Home() {
 					</nav>
 					<div className="text-center p-10">
 						<div className="mb-10 relative mx-auto rounded-full w-60 h-60 overflow-hidden md:mb-11">
-							<Image alt="Profile Picture Featuring Pedro Kielblock" src={profile}/>
+							<Image 
+								alt="Profile Picture Featuring Pedro Kielblock" 
+								src="https://github.com/pkielblock.png"
+								width={460}
+								height={460}
+							/>
 						</div>
 						<h2 id="name" className="text-2xl py-2 text-black dark:text-white font-medium md:text-4xl lg:text-5xl">
 							Pedro Kielblock
