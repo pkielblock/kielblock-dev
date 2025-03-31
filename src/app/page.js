@@ -20,9 +20,18 @@ export default function Home() {
 			<main id="home" className="bg-white px-10 md:px-20 lg:px-40 dark:bg-black">
 				<section>
 					<nav className="py-10 flex justify-between">
-						<h1 className="p-2 text-lg dark:text-white hover:underline">
-							<a href="https://kielblock.dev">kielblock.dev</a>
-						</h1>
+						<div className="p-2 flex items-center">
+							<a href="https://kielblock.dev" className="hover:opacity-80 transition-opacity">
+								<Image 
+									src={darkMode ? "/nameheaderwhite.png" : "/nameheaderblack.png"}
+									alt="kielblock.dev logo"
+									width={100}
+									height={33}
+									priority
+									className="transition-opacity duration-300"
+								/>
+							</a>
+						</div>
 						<ul className="flex items-center">
 							<li>
 								<button
@@ -48,10 +57,10 @@ export default function Home() {
 						</ul>
 					</nav>
 					<div className="text-center p-10">
-						<div className="mb-10 relative mx-auto rounded-full w-60 h-60 overflow-hidden md:mb-11">
+						<div className="mb-10 relative mx-auto w-60 h-60 overflow-hidden md:mb-11">
 							<Image 
 								alt="Profile Picture Featuring Pedro Kielblock" 
-								src={darkMode ? "/logo-color.png" : "/logo-grayscale.png"}
+								src={darkMode ? "/logowhitenb.png" : "/logoblacknb.png"}
 								width={460}
 								height={460}
 								priority
@@ -67,9 +76,9 @@ export default function Home() {
 							<Typewriter words={["Software Developer"]} cursor cursorStyle="_" typeSpeed={200} deleteSpeed={100} loop={true}/>
 						</h3>
 						<p className="text-md py-5 leading-8 text-gray-950 md:text-xl max-w-xl lg:max-w-5xl mx-auto md:leading-10 dark:text-gray-200">
-							Hey 👋 I am a passionate developer dedicated to continuous improvement and growth in my
+							I am a passionate developer dedicated to continuous improvement and growth in my
 							field. Each day
-							presents a new opportunity to enhance my skills and contribute to innovative solutions. 😎
+							presents a new opportunity to enhance my skills and contribute to innovative solutions.
 						</p>
 						<div className="text-5xl flex justify-center gap-20 py-20 text-gray-950 dark:text-white">
 							<a href="https://github.com/pkielblock" target="_blank">
@@ -204,11 +213,17 @@ export default function Home() {
 				</section>
 				<footer className="bg-white dark:bg-black pt-10">
 					<div className="w-full mx-auto max-w-screen-xl p-4 flex flex-col md:flex-row items-center md:justify-between text-center">
-						<span className="text-sm text-black dark:text-white">
-							<a href="https://kielblock.dev/" className="hover:underline">
-								kielblock.dev
+						<div className="flex items-center">
+							<a href="https://kielblock.dev/" className="hover:opacity-80 transition-opacity">
+								<Image 
+									src={darkMode ? "/nameheaderwhite.png" : "/nameheaderblack.png"}
+									alt="kielblock.dev logo"
+									width={90}
+									height={33}
+									className="transition-opacity duration-300"
+								/>
 							</a>
-						</span>
+						</div>
 						<ul className="flex flex-wrap justify-center items-center mt-3 md:mt-0 text-sm font-medium text-black dark:text-white">
 							<li>
 								<a href="#home" className="hover:underline mx-2 md:mx-4">
