@@ -51,9 +51,13 @@ export default function Home() {
 						<div className="mb-10 relative mx-auto rounded-full w-60 h-60 overflow-hidden md:mb-11">
 							<Image 
 								alt="Profile Picture Featuring Pedro Kielblock" 
-								src="https://github.com/pkielblock.png"
+								src={darkMode ? "/logo-color.png" : "/logo-grayscale.png"}
 								width={460}
 								height={460}
+								priority
+								loading="eager"
+								quality={90}
+								className="object-cover transition-opacity duration-300"
 							/>
 						</div>
 						<h2 id="name" className="text-2xl py-2 text-black dark:text-white font-medium md:text-4xl lg:text-5xl">
