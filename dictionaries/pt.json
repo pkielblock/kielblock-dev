@@ -1,0 +1,35 @@
+{
+  "navigation": {
+    "logoAlt": "logo kielblock.dev",
+    "resume": "Currículo"
+  },
+  "hero": {
+    "profilePicAlt": "Foto de Perfil de Pedro Kielblock",
+    "name": "Pedro Kielblock",
+    "title": "Desenvolvedor de Software",
+    "description": "Sou um desenvolvedor apaixonado, dedicado à melhoria contínua e ao crescimento em minha área. Cada dia apresenta uma nova oportunidade para aprimorar minhas habilidades e contribuir para soluções inovadoras."
+  },
+  "resumeModal": {
+    "title": "Currículo",
+    "prompt": "Clique no idioma desejado para baixar meu currículo.",
+    "english": "English (US)",
+    "portuguese": "Português (BR)"
+  },
+  "background": {
+    "title": "Formação",
+    "description": "Possuo diploma em Desenvolvimento de Sistemas pela ETEC Lauro Gomes e graduação em Análise e Desenvolvimento de Sistemas pela FATEC São Caetano do Sul - Antonio Russo. Essa formação proporciona uma compreensão abrangente dos aspectos técnicos e teóricos da área. Minha fluência em inglês é certificada pelas qualificações <a class=\"custom-link\" href=\"https://www.cambridgeenglish.org/exams-and-tests/first/\" target=\"_blank\">B2 First</a>, <a class=\"custom-link\" href=\"https://www.cambridgeenglish.org/exams-and-tests/advanced/\" target=\"_blank\">C1 Advanced</a> e <a class=\"custom-link\" href=\"https://www.cambridgeenglish.org/exams-and-tests/proficiency/\" target=\"_blank\">C2 Proficiency</a>, permitindo uma comunicação eficaz em diversos ambientes profissionais. Atualmente, estou utilizando essas habilidades em minha função como Analista de Sistemas na <a class=\"custom-link\" href=\"https://www.rethinkingworks.com/\" target=\"_blank\">ReThinkingWorks</a>, onde participo de diversos projetos inovadores, aplicando minha expertise técnica e habilidades analíticas para desenvolver e otimizar sistemas, acompanhando o ritmo da rápida evolução tecnológica."
+  },
+  "stack": {
+    "title": "Tecnologias",
+    "java": "Java",
+    "spring": "Spring",
+    "angular": "Angular",
+    "description": "Sou especialista em Desenvolvimento Web, com ênfase particular em tecnologias de <span class=\"font-bold text-black dark:text-white\">backend</span> usando <span class=\"font-bold text-black dark:text-white\">Java</span> e <span class=\"font-bold text-black dark:text-white\">Spring Boot</span>. Embora minha principal expertise esteja nesta área, mantenho uma abordagem flexível e expansiva ao aprendizado."
+  },
+  "footer": {
+    "logoAlt": "logo kielblock.dev",
+    "home": "Início",
+    "background": "Formação",
+    "stack": "Tecnologias"
+  }
+} 

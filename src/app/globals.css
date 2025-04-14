@@ -14,3 +14,28 @@ body {
 	background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 	font-family: "Menlo", monospace;
 }
+
+/* Custom link styles for HTML injected content */
+.custom-link {
+  font-weight: bold;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+/* Light mode styles */
+.custom-link {
+  color: black;
+}
+
+.custom-link:hover {
+  color: #4B5563; /* text-gray-600 */
+}
+
+/* Dark mode styles */
+.dark .custom-link {
+  color: white;
+}
+
+.dark .custom-link:hover {
+  color: #D1D5DB; /* text-gray-300 */
+}

@@ -1,0 +1,35 @@
+{
+  "navigation": {
+    "logoAlt": "kielblock.dev logo",
+    "resume": "Resume"
+  },
+  "hero": {
+    "profilePicAlt": "Profile Picture Featuring Pedro Kielblock",
+    "name": "Pedro Kielblock",
+    "title": "Software Developer",
+    "description": "I am a passionate developer dedicated to continuous improvement and growth in my field. Each day presents a new opportunity to enhance my skills and contribute to innovative solutions."
+  },
+  "resumeModal": {
+    "title": "Resume",
+    "prompt": "Click on the desired language to download my resume.",
+    "english": "English (US)",
+    "portuguese": "Português (BR)"
+  },
+  "background": {
+    "title": "Background",
+    "description": "I hold a diploma in Systems Development from ETEC Lauro Gomes and a degree in Analysis and Systems Development from FATEC São Caetano do Sul - Antonio Russo. This background provides a comprehensive understanding of the technical and theoretical aspects of the field. My fluency in English is certified by <a class=\"custom-link\" href=\"https://www.cambridgeenglish.org/exams-and-tests/first/\" target=\"_blank\">B2 First</a>, <a class=\"custom-link\" href=\"https://www.cambridgeenglish.org/exams-and-tests/advanced/\" target=\"_blank\">C1 Advanced</a> and <a class=\"custom-link\" href=\"https://www.cambridgeenglish.org/exams-and-tests/proficiency/\" target=\"_blank\">C2 Proficiency</a> qualifications, enabling effective communication in diverse professional settings. Currently, I am leveraging these skills in my role as a Systems Analyst at <a class=\"custom-link\" href=\"https://www.rethinkingworks.com/\" target=\"_blank\">ReThinkingWorks</a>, where I engage in a range of innovative projects, applying my technical expertise and analytical skills to develop and optimize systems, keeping pace with the rapidly evolving technological landscape."
+  },
+  "stack": {
+    "title": "Stack",
+    "java": "Java",
+    "spring": "Spring",
+    "angular": "Angular",
+    "description": "I specialize in Web Development, with a particular emphasis on <span class=\"font-bold text-black dark:text-white\">backend</span> technologies using <span class=\"font-bold text-black dark:text-white\">Java</span> and <span class=\"font-bold text-black dark:text-white\">Spring Boot</span>. While my primary expertise lies in this area, I maintain a flexible and expansive approach to learning."
+  },
+  "footer": {
+    "logoAlt": "kielblock.dev logo",
+    "home": "Home",
+    "background": "Background",
+    "stack": "Stack"
+  }
+} 

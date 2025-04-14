@@ -9,6 +9,7 @@ const nextConfig = {
       },
     ],
   },
+  // i18n object removed as middleware handles routing
 }
 
 module.exports = nextConfig

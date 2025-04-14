@@ -11,7 +11,9 @@
   "dependencies": {
     "@vercel/analytics": "^1.1.1",
     "@vercel/speed-insights": "^1.0.2",
-    "next": "14.0.4",
+    "accept-language": "^3.0.20",
+    "caniuse-lite": "^1.0.30001713",
+    "next": "^15.3.0",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^5.0.1",
