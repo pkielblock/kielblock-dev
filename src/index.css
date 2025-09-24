@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Portfolio Design System - Modern Professional Theme */
+
+@layer base {
+    :root {
+        --background: 240 10% 3.9%;
+        --foreground: 0 0% 98%;
+
+        --card: 240 10% 3.9%;
+        --card-foreground: 0 0% 98%;
+
+        --popover: 240 10% 3.9%;
+        --popover-foreground: 0 0% 98%;
+
+        --primary: 199 89% 48%;
+        --primary-foreground: 0 0% 98%;
+
+        --secondary: 240 3.7% 15.9%;
+        --secondary-foreground: 0 0% 98%;
+
+        --muted: 240 3.7% 15.9%;
+        --muted-foreground: 240 5% 64.9%;
+
+        --accent: 199 89% 48%;
+        --accent-foreground: 0 0% 98%;
+
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 0 0% 98%;
+
+        --border: 240 3.7% 15.9%;
+        --input: 240 3.7% 15.9%;
+        --ring: 199 89% 48%;
+
+        --radius: 0.75rem;
+
+        /* Portfolio-specific design tokens */
+        --gradient-primary: linear-gradient(135deg, hsl(199 89% 48%), hsl(213 94% 68%), hsl(226 71% 40%));
+        --gradient-secondary: linear-gradient(135deg, hsl(240 10% 3.9%), hsl(240 3.7% 15.9%));
+        --gradient-hero: linear-gradient(135deg, hsl(199 89% 48% / 0.1), hsl(213 94% 68% / 0.1));
+
+        --shadow-glow: 0 0 40px hsl(199 89% 48% / 0.3);
+        --shadow-card: 0 10px 30px -10px hsl(240 10% 3.9% / 0.5);
+
+        --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+        --sidebar-background: 0 0% 98%;
+
+        --sidebar-foreground: 240 5.3% 26.1%;
+
+        --sidebar-primary: 240 5.9% 10%;
+
+        --sidebar-primary-foreground: 0 0% 98%;
+
+        --sidebar-accent: 240 4.8% 95.9%;
+
+        --sidebar-accent-foreground: 240 5.9% 10%;
+
+        --sidebar-border: 220 13% 91%;
+
+        --sidebar-ring: 199 89% 48%;
+    }
+
+    .light {
+        --background: 0 0% 100%;
+        --foreground: 240 10% 3.9%;
+        --card: 0 0% 100%;
+        --card-foreground: 240 10% 3.9%;
+        --primary: 199 89% 48%;
+        --secondary: 240 4.8% 95.9%;
+        --muted: 240 4.8% 95.9%;
+        --muted-foreground: 240 3.8% 46.1%;
+        --border: 240 5.9% 90%;
+        --input: 240 5.9% 90%;
+
+        --gradient-hero: linear-gradient(135deg, hsl(199 89% 48% / 0.05), hsl(213 94% 68% / 0.05), hsl(226 71% 40% / 0.05));
+        --shadow-card: 0 10px 30px -10px hsl(240 10% 3.9% / 0.1);
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    body {
+        @apply bg-background text-foreground font-sans;
+    }
+
+    /* Portfolio-specific utilities */
+    .gradient-primary {
+        background: var(--gradient-primary);
+    }
+
+    .gradient-hero {
+        background: var(--gradient-hero);
+    }
+
+    .shadow-glow {
+        box-shadow: var(--shadow-glow);
+    }
+
+    .shadow-card {
+        box-shadow: var(--shadow-card);
+    }
+
+    .transition-smooth {
+        transition: var(--transition-smooth);
+    }
+
+    .transition-bounce {
+        transition: var(--transition-bounce);
+    }
+
+    /* Scroll behavior */
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: hsl(var(--muted));
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: hsl(var(--primary));
+        border-radius: 4px;
+    }
+}
