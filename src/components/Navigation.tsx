@@ -38,13 +38,13 @@ const Navigation = () => {
     ];
 
     return (
-        <nav className={`fixed top-0 w-full z-50 transition-smooth backdrop-blur-md ${isScrolled
-            ? "bg-background/15 border-b border-border/20 shadow-card"
+        <nav className={`fixed top-0 w-full z-50 transition-smooth ${isScrolled
+            ? "bg-background/15 backdrop-blur-md border-b border-border/20 shadow-card"
             : "bg-transparent"
-            }`} style={{
+            }`} style={isScrolled ? {
                 WebkitBackdropFilter: 'blur(12px)',
                 backdropFilter: 'blur(12px)'
-            }}>
+            } : {}}>
             <div className="container mx-auto px-6">
                 <div className="flex items-center justify-between h-16">
                     {/* Logo */}
