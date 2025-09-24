@@ -11,9 +11,20 @@ const Navigation = () => {
             setIsScrolled(window.scrollY > 50);
         };
 
+        const handleClickOutside = (event: MouseEvent) => {
+            if (isMobileMenuOpen && !(event.target as Element).closest('nav')) {
+                setIsMobileMenuOpen(false);
+            }
+        };
+
         window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+        document.addEventListener("click", handleClickOutside);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+            document.removeEventListener("click", handleClickOutside);
+        };
+    }, [isMobileMenuOpen]);
 
     const scrollToSection = (id: string) => {
         document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -75,7 +86,7 @@ const Navigation = () => {
 
                 {/* Mobile Navigation */}
                 {isMobileMenuOpen && (
-                    <div className="md:hidden absolute top-full left-0 w-full bg-background/95 backdrop-blur-md border-b border-border shadow-card animate-fade-in">
+                    <div className="md:hidden absolute top-full left-0 w-full bg-background/98 backdrop-blur-md border-b border-border shadow-card animate-fade-in z-40">
                         <div className="flex flex-col space-y-4 p-6">
                             {navItems.map((item) => (
                                 <button
