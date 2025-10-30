@@ -41,11 +41,10 @@
 					<BlurFade
 						delay={BLUR_FADE_DELAY}
 						class="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none"
-						yOffset={8}>Hi, I'm Bhide 👋</BlurFade
+						yOffset={8}>Pedro Kielblock</BlurFade
 					>
 					<BlurFade class="max-w-[600px] md:text-xl" delay={BLUR_FADE_DELAY}
-						>Software Engineer turned Entrepreneur. I love building things and helping people. Very
-						active on Twitter.</BlurFade
+						>Backend-focused developer passionate about building stuff.</BlurFade
 					>
 				</div>
 				<BlurFade delay={BLUR_FADE_DELAY}>
@@ -92,13 +91,69 @@
 						href={edu.href}
 						logoUrl={edu.logoUrl}
 						company={edu.school}
-						title={edu.school}
+						title={edu.degree}
 						subtitle={edu.degree}
 						start={edu.start}
 						end={edu.end}
+						description={edu.description}
 					/>
 				</BlurFade>
 			{/each}
+		</div>
+	</section>
+	<section id="certificates">
+		<div class="flex min-h-0 flex-col gap-y-3">
+			<BlurFade delay={BLUR_FADE_DELAY}>
+				<h2 class="text-xl font-bold">Certifications</h2>
+			</BlurFade>
+			<div class="grid gap-3">
+				{#each DATA.certificates as cert, id}
+					<BlurFade delay={BLUR_FADE_DELAY * 1.2 + id * 0.05}>
+						<div class="rounded-lg border bg-card p-4 text-card-foreground">
+							<div class="flex items-start justify-between gap-4">
+								<div class="flex-grow">
+									<h3 class="text-sm font-semibold sm:text-base">{cert.name}</h3>
+									<p class="mt-1 text-xs text-muted-foreground">{cert.issuer}</p>
+								</div>
+								<div class="text-right">
+									{#if cert.showScore}
+										<p class="text-xs text-muted-foreground">Score</p>
+									{/if}
+									<p class="text-sm font-semibold">{cert.score}</p>
+									<p class="text-xs text-muted-foreground">{cert.date}</p>
+								</div>
+							</div>
+						</div>
+					</BlurFade>
+				{/each}
+			</div>
+		</div>
+	</section>
+	<section id="courses">
+		<div class="flex min-h-0 flex-col gap-y-3">
+			<BlurFade delay={BLUR_FADE_DELAY}>
+				<h2 class="text-xl font-bold">Courses</h2>
+			</BlurFade>
+			<div class="grid gap-3">
+				{#each DATA.courses as course, id}
+					<BlurFade delay={BLUR_FADE_DELAY * 1.2 + id * 0.05}>
+						<div class="rounded-lg border bg-card p-4 text-card-foreground">
+							<div class="flex items-start justify-between gap-4">
+								<div class="flex-grow">
+									<h3 class="text-sm font-semibold sm:text-base">{course.name}</h3>
+									<p class="mt-1 text-xs text-muted-foreground">{course.provider}</p>
+								</div>
+								<div class="text-right">
+									{#if course.duration}
+										<p class="text-sm font-semibold">{course.duration}</p>
+									{/if}
+									<p class="text-xs text-muted-foreground">{course.date}</p>
+								</div>
+							</div>
+						</div>
+					</BlurFade>
+				{/each}
+			</div>
 		</div>
 	</section>
 	<section id="skills">
@@ -115,6 +170,7 @@
 			</div>
 		</div>
 	</section>
+	<!-- Projects section disabled
 	<section id="projects">
 		<div class="w-full space-y-12 py-12">
 			<BlurFade delay={BLUR_FADE_DELAY}>
@@ -153,6 +209,8 @@
 			</div>
 		</div>
 	</section>
+	-->
+	<!-- Hackathons section disabled
 	<section id="hackathons">
 		<div class="w-full space-y-12 py-12">
 			<BlurFade delay={BLUR_FADE_DELAY}>
@@ -185,6 +243,7 @@
 			</BlurFade>
 		</div>
 	</section>
+	-->
 	<section id="contact">
 		<div class="grid w-full items-center justify-center gap-4 px-4 py-12 text-center md:px-6">
 			<BlurFade delay={BLUR_FADE_DELAY * 2}>
@@ -196,11 +255,9 @@
 					<p
 						class="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
 					>
-						Want to chat? Just shoot me a dm
-						<a href={DATA.contact.social.X.url} class="text-blue-500 hover:underline">
-							with a direct question on twitter
-						</a>
-						and I&apos;ll respond whenever I can. I will ignore all soliciting.
+						Want to chat? Just send me an
+						<a href={DATA.contact.social.Mail.url} class="text-blue-500 hover:underline"> Email </a>
+						and I'll respond whenever I can.
 					</p>
 				</div>
 			</BlurFade>

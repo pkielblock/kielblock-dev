@@ -3,219 +3,176 @@ import { CodeIcon, Github, Globe, HomeIcon, NotebookIcon, Youtube } from 'lucide
 import GithubSvg from '$lib/imgs/github.svg';
 import GithubDarkSvg from '$lib/imgs/github-dark.svg';
 
-import PeerListSvg from '$lib/imgs/peerlist.svg';
-import PeerListDarkSvg from '$lib/imgs/peerlist-dark.svg';
-
 import GmailSvg from '$lib/imgs/gmail.svg';
 import GmailDarkSvg from '$lib/imgs/gmail-dark.svg';
 
 import LinkedinSvg from '$lib/imgs/linkedin.svg';
 import LinkedinDarkSvg from '$lib/imgs/linkedin-dark.svg';
 
-import TwitterSvg from '$lib/imgs/x.svg';
-import TwitterDarkSvg from '$lib/imgs/x-dark.svg';
-
-import AtomicImg from '$lib/imgs/atomic.png';
-import ShopifyImg from '$lib/imgs/shopify.svg';
-import NvidiaImg from '$lib/imgs/nvidia.png';
-import SplunkImg from '$lib/imgs/splunk.svg';
-import LimeImg from '$lib/imgs/lime.svg';
-import MitreMediaImg from '$lib/imgs/mitremedia.png';
-import BuildSpaceImg from '$lib/imgs/buildspace.jpg';
-import WaterLooImg from '$lib/imgs/waterloo.png';
-import LaurierImg from '$lib/imgs/laurier.png';
-import IBImg from '$lib/imgs/ib.png';
+import RtwImg from '$lib/imgs/rtw.svg';
+import EtecImg from '$lib/imgs/etec.png';
+import FatecImg from '$lib/imgs/fatec.png';
+import CulturaInglesaImg from '$lib/imgs/cultura.png';
 
 // Your resume data
 export let DATA = {
-	name: 'Sikandar Bhide',
-	initials: 'SB',
-	url: 'https://github.com/SikandarJODD',
-	img: 'https://i.pinimg.com/736x/9e/dc/a6/9edca66eba199828bda2dbaf35642154.jpg',
-	location: 'Mumbai, India',
-	locationLink: 'https://www.google.com/maps/place/mumbai',
-	description:
-		'Software Engineer turned Entrepreneur. I love building things and helping people. Very active on Twitter.',
+	name: 'Pedro Kielblock',
+	initials: 'PK',
+	url: 'https://kielblock.dev',
+	img: 'https://github.com/pkielblock.png',
+	location: 'Santo André, São Paulo - Brazil',
+	locationLink: 'https://www.google.com/maps/place/santo+andre',
+	description: 'Backend-focused Software Developer',
 	summary:
-		'At the end of 2022, I quit my job as a software engineer to go fulltime into building and scaling my own SaaS businesses. In the past, [I pursued a double degree in computer science and business](/#education), [interned at big tech companies in Sil// icon Valley](https://www.youtube.com/watch?v=d-LJ2e5qKdE), and [competed in over 21 hackathons for fun](/#hackathons). I also had the pleasure of being a part of the first ever in-person cohort of buildspace called [buildspace sf1](https://buildspace.so/sf1).',
-	avatarUrl: 'https://i.pinimg.com/564x/df/d2/76/dfd276448eed0f2b6094d1cb2c9d0269.jpg',
-	skills: [
-		'Svelte',
-		'Sveltekit',
-		'Typescript',
-		'Node.js',
-		'Python',
-		'Go',
-		'Postgres',
-		'Docker',
-		'Kubernetes',
-		'Java',
-		'C++'
-	],
+		"I'm a backend-focused software developer who enjoys building websites and tools that make life easier. Whether it's integrating APIs, making dashboards, or just tinkering with new ideas, I love solving problems and learning along the way. I work comfortably in both English and Portuguese.",
+	avatarUrl: 'https://github.com/pkielblock.png',
+	skills: ['Java', 'Spring Boot', 'REST APIs', 'MySQL', 'PostgreSQL', 'PowerBI'],
 	navbar: [
 		{ href: '/', icon: HomeIcon, label: 'Home' },
-		{ href: '/blog', icon: NotebookIcon, label: 'Blog' },
-		{ href: '#', icon: CodeIcon, label: 'Projects' }
+		{ href: '/blog', icon: NotebookIcon, label: 'Blog' }
+		/*
+		{
+			href: 'https://github.com/pkielblock?tab=repositories', // GitHub repos
+			icon: CodeIcon,
+			label: 'Projects',
+			target: '_blank',
+			rel: 'noopener noreferrer'
+		}
+		*/
 	],
 	contact: {
-		email: 'hello@example.com',
-		tel: '+123456789',
+		email: 'pedro@kielblock.dev',
+		tel: '+55 11 99718-3394',
 		social: {
 			GitHub: {
 				name: 'GitHub',
-				url: 'https://github.com/SikandarJODD/portfolio-template',
-				// // icon: Icons.github,
+				url: 'https://github.com/pkielblock',
 				icon: GithubSvg,
 				navbar: true,
-				dark_icon: GithubDarkSvg
+				dark_icon: GithubDarkSvg,
+				target: '_blank',
+				rel: 'noopener noreferrer'
 			},
 			LinkedIn: {
 				name: 'LinkedIn',
-				url: 'https://www.linkedin.com/in/sikandar-bhide/',
-				// // icon: Icons.linkedin,
+				url: 'https://www.linkedin.com/in/pedrokielblock/',
 				icon: LinkedinSvg,
 				navbar: true,
-				dark_icon: LinkedinDarkSvg
+				dark_icon: LinkedinDarkSvg,
+				target: '_blank',
+				rel: 'noopener noreferrer'
 			},
-			X: {
-				name: 'X',
-				url: 'https://twitter.com/Sikandar_Bhide',
-				// // icon: Icons.x,
-				icon: TwitterSvg,
-				navbar: true,
-				dark_icon: TwitterDarkSvg
-			},
-			PeerList: {
-				name: 'PeerList',
-				url: 'https://peerlist.io/bhide',
-				// // icon: Icons.x,
-				icon: PeerListSvg,
-				navbar: true,
-				dark_icon: PeerListDarkSvg
-			},
-			// Youtube: {
-			// 	name: 'Youtube',
-			// 	url: 'https://github.com/SikandarJODD',
-			// 	// // icon: Icons.youtube,
-			// 	icon: Youtube,
-			// 	navbar: true
-			// },
-			email: {
-				name: 'Send Email',
-				url: '#',
-				// // icon: Icons.email,
+			Mail: {
+				name: 'Email',
+				url: 'mailto:pedro@kielblock.dev',
 				icon: GmailSvg,
-				navbar: false,
-				dark_icon: GmailDarkSvg
+				navbar: true,
+				dark_icon: GmailDarkSvg,
+				target: '_blank',
+				rel: 'noopener noreferrer'
 			}
 		}
 	},
 	work: [
 		{
-			company: 'Atomic Finance',
-			href: 'https://atomic.finance',
+			company: 'ReThinkingWorks',
+			href: 'https://rethinkingworks.com',
 			badges: [],
-			location: 'Remote',
-			title: 'Bitcoin Protocol Engineer',
-			logoUrl: AtomicImg,
-			start: 'May 2021',
-			end: 'Oct 2022',
+			location: 'Santo André, SP',
+			title: 'Systems Analyst',
+			logoUrl: RtwImg,
+			start: 'Jan 2024',
+			end: 'Present',
 			description:
-				'Implemented the Bitcoin discreet log contract (DLC) protocol specifications as an open source Typescript SDK. Dockerized all microservices and setup production kubernetes cluster. Architected a data lake using AWS S3 and Athena for historical backtesting of bitcoin trading strategies. Built a mobile app using react native and typescript.'
+				'Developed solutions using monday.com, Pipefy, and FuseBase. Integrated REST APIs within company systems. Created dashboards with PowerBI and Fabric. Continuous development and maintenance of company website, blog, and newsletter. Wrote and communicated regularly in English.'
 		},
 		{
-			company: 'Shopify',
+			company: 'ReThinkingWorks',
+			href: 'https://rethinkingworks.com',
 			badges: [],
-			href: 'https://shopify.com',
-			location: 'Remote',
-			title: 'Software Engineer',
-			logoUrl: ShopifyImg,
-			start: 'January 2021',
-			end: 'April 2021',
+			location: 'Santo André, SP',
+			title: 'Intern',
+			logoUrl: RtwImg,
+			start: 'Jul 2022',
+			end: 'Dec 2023',
 			description:
-				'Implemented a custom Kubernetes controller in Go to automate the deployment of MySQL and ProxySQL custom resources in order to enable 2,000+ internal developers to instantly deploy their app databases to production. Wrote several scripts in Go to automate MySQL database failovers while maintaining master-slave replication topologies and keeping Zookeeper nodes consistent with changes.'
-		},
-		{
-			company: 'Nvidia',
-			href: 'https://nvidia.com/',
-			badges: [],
-			location: 'Santa Clara, CA',
-			title: 'Software Engineer',
-			logoUrl: NvidiaImg,
-			start: 'January 2020',
-			end: 'April 2020',
-			description:
-				'Architected and wrote the entire MVP of the GeForce Now Cloud Gaming internal admin and A/B testing dashboard using React, Redux, TypeScript, and Python.'
-		},
-		{
-			company: 'Splunk',
-			href: 'https://splunk.com',
-			badges: [],
-			location: 'San Jose, CA',
-			title: 'Software Engineer',
-			logoUrl: SplunkImg,
-			start: 'January 2019',
-			end: 'April 2019',
-			description:
-				'Co-developed a prototype iOS app with another intern in Swift for the new Splunk Phantom security orchestration product (later publicly demoed and launched at .conf annual conference in Las Vegas). Implemented a realtime service for the iOS app in Django (Python) and C++; serialized data using protobufs transmitted over gRPC resulting in an approximate 500% increase in data throughput.'
-		},
-		{
-			company: 'Lime',
-			href: 'https://li.me/',
-			badges: [],
-			location: 'San Francisco, CA',
-			title: 'Software Engineer',
-			logoUrl: LimeImg,
-			start: 'January 2018',
-			end: 'April 2018',
-			description:
-				'Proposed and implemented an internal ruby API for sending/receiving commands to scooters over LTE networks. Developed a fully automated bike firmware update system to handle asynchronous firmware updates of over 100,000+ scooters worldwide, and provide progress reports in real-time using React, Ruby on Rails, PostgreSQL and AWS EC2 saving hundreds of developer hours.'
-		},
-		{
-			company: 'Mitre Media',
-			href: 'https://mitremedia.com/',
-			badges: [],
-			location: 'Toronto, ON',
-			title: 'Software Engineer',
-			logoUrl: MitreMediaImg,
-			start: 'May 2017',
-			end: 'August 2017',
-			description:
-				'Designed and implemented a robust password encryption and browser cookie storage system in Ruby on Rails. Leveraged the Yahoo finance API to develop the dividend.com equity screener'
+				'Developed solutions using monday.com, Pipefy, and FuseBase. Continuous development and maintenance of company website, blog, and newsletter. Wrote and communicated regularly in English.'
 		}
 	],
 	education: [
 		{
-			school: 'Buildspace',
-			href: 'https://buildspace.so',
-			degree: 's3, s4, sf1, s5',
-			logoUrl: BuildSpaceImg,
+			school: 'FATEC São Caetano do Sul - Antonio Russo',
+			href: 'https://fatecscl.edu.br',
+			degree: 'Technologist in Systems Analysis and Development',
+			logoUrl: FatecImg,
 			start: '2023',
-			end: '2024'
+			end: '2023',
+			description:
+				'Completed a technologist program focused on systems analysis and software development. Developed expertise in analyzing complex systems, designing solutions, and implementing software projects with practical industry applications.'
 		},
 		{
-			school: 'University of Waterloo',
-			href: 'https://uwaterloo.ca',
-			degree: "Bachelor's Degree of Computer Science (BCS)",
-			logoUrl: WaterLooImg,
-			start: '2016',
-			end: '2021'
+			school: 'ETEC Lauro Gomes',
+			href: 'https://www.etec.sp.gov.br',
+			degree: 'Technical Degree in Systems Development',
+			logoUrl: EtecImg,
+			start: '2019',
+			end: '2019',
+			description:
+				'Completed a technical education program emphasizing practical systems development skills. Gained foundational knowledge in software development, database design, and IT infrastructure.'
 		},
 		{
-			school: 'Wilfrid Laurier University',
-			href: 'https://wlu.ca',
-			degree: "Bachelor's Degree of Business Administration (BBA)",
-			logoUrl: LaurierImg,
-			start: '2016',
-			end: '2021'
+			school: 'Cultura Inglesa',
+			href: 'https://www.culturainglesa.com.br',
+			degree: 'English as a Second Language',
+			logoUrl: CulturaInglesaImg,
+			start: '2013',
+			end: '2021',
+			description:
+				'Completed the entire English language course to improve my communication skills..'
+		}
+	],
+	certificates: [
+		{
+			name: 'Cambridge Assessment English - C2 Proficiency',
+			score: '202',
+			issuer: 'Cambridge Assessment English',
+			date: '2024',
+			showScore: true
 		},
 		{
-			school: 'International Baccalaureate',
-			href: 'https://ibo.org',
-			degree: 'IB Diploma',
-			logoUrl: IBImg,
-			start: '2012',
-			end: '2016'
+			name: 'ETS - TOEIC',
+			score: '925',
+			issuer: 'ETS',
+			date: '2023',
+			showScore: true
+		},
+		{
+			name: 'Cambridge Assessment English - C1 Advanced',
+			score: '185',
+			issuer: 'Cambridge Assessment English',
+			date: '2021',
+			showScore: true
+		},
+		{
+			name: 'Cambridge Assessment English - B2 First',
+			score: '163',
+			issuer: 'Cambridge Assessment English',
+			date: '2018',
+			showScore: true
+		}
+	],
+	courses: [
+		{
+			name: 'Complete Java Course - REST API/Spring Boot/OOP/JPA',
+			duration: '54.5 hours',
+			provider: 'Udemy',
+			date: '2023'
+		},
+		{
+			name: 'Extension: Internet of Things and Smart Environments',
+			duration: '',
+			provider: 'FATEC',
+			date: '2021'
 		}
 	],
 	projects: [

@@ -10,7 +10,7 @@
 	export let title: string = '';
 	export let subtitle: string = '';
 	export let href: string = '';
-	export let badges: string[]=[''];
+	export let badges: string[] = [''];
 	export let description: string = '';
 	export let start: string = '';
 	export let end: string = '';
@@ -27,8 +27,8 @@
 <a href={href || '#'} on:click={handleClick}>
 	<div class="flex rounded-lg bg-card text-card-foreground">
 		<div class="flex-none">
-			<Avatar.Root class="bg-muted-background m-auto size-12 border dark:bg-foreground">
-				<Avatar.Image src={logoUrl} alt={company} class="object-contain" />
+			<Avatar.Root class="bg-muted-background m-auto size-14 border dark:bg-foreground">
+				<Avatar.Image src={logoUrl} alt={company} class="object-cover" />
 				<Avatar.Fallback>{company[0]}</Avatar.Fallback>
 			</Avatar.Root>
 		</div>
