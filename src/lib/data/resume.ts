@@ -133,28 +133,28 @@ export let DATA = {
 	],
 	certificates: [
 		{
-			name: 'Cambridge Assessment English - C2 Proficiency',
+			name: 'C2 Proficiency',
 			score: '202',
 			issuer: 'Cambridge Assessment English',
 			date: '2024',
 			showScore: true
 		},
 		{
-			name: 'ETS - TOEIC',
+			name: 'TOEIC',
 			score: '925',
 			issuer: 'ETS',
 			date: '2023',
 			showScore: true
 		},
 		{
-			name: 'Cambridge Assessment English - C1 Advanced',
+			name: 'C1 Advanced',
 			score: '185',
 			issuer: 'Cambridge Assessment English',
 			date: '2021',
 			showScore: true
 		},
 		{
-			name: 'Cambridge Assessment English - B2 First',
+			name: 'B2 First',
 			score: '163',
 			issuer: 'Cambridge Assessment English',
 			date: '2018',
@@ -170,7 +170,7 @@ export let DATA = {
 		},
 		{
 			name: 'Extension: Internet of Things and Smart Environments',
-			duration: '',
+			duration: '32 hours',
 			provider: 'FATEC',
 			date: '2021'
 		}
