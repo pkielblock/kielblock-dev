@@ -105,7 +105,7 @@ export let DATA = {
 			href: 'https://fatecscl.edu.br',
 			degree: 'Technologist in Systems Analysis and Development',
 			logoUrl: FatecImg,
-			start: '2023',
+			start: '2021',
 			end: '2023',
 			description:
 				'Completed a technologist program focused on systems analysis and software development. Developed expertise in analyzing complex systems, designing solutions, and implementing software projects with practical industry applications.'
@@ -116,7 +116,7 @@ export let DATA = {
 			degree: 'Technical Degree in Systems Development',
 			logoUrl: EtecImg,
 			start: '2019',
-			end: '2019',
+			end: '2020',
 			description:
 				'Completed a technical education program emphasizing practical systems development skills. Gained foundational knowledge in software development, database design, and IT infrastructure.'
 		},
