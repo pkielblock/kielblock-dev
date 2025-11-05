@@ -13,8 +13,8 @@ published: true
 {
  "firstName": "Pedro",
  "lastName": "Kielblock",
- "age": 23
- "languages": ["portuguese", "english"]
+ "age": 23,
+ "languages": ["portuguese", "english", "spanish"]
 }
 ```
 
