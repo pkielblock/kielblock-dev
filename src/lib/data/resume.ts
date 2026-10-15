@@ -26,7 +26,7 @@ export let DATA = {
 	summary:
 		"I'm a backend-focused software developer who enjoys building websites and tools that make life easier. Whether it's integrating APIs, making dashboards, or just tinkering with new ideas, I love solving problems and learning along the way. I work comfortably in both English and Portuguese.",
 	avatarUrl: 'https://github.com/pkielblock.png',
-	skills: ['Java', 'Spring Boot', 'REST APIs', 'MySQL', 'PostgreSQL', 'PowerBI'],
+	skills: ['Java', 'Spring Boot', 'REST APIs', 'MySQL', 'PostgreSQL'],
 	navbar: [
 		{ href: '/', icon: HomeIcon, label: 'Home' },
 		{ href: '/blog', icon: NotebookIcon, label: 'Blog' }
@@ -84,7 +84,7 @@ export let DATA = {
 			start: 'Jan 2024',
 			end: 'Present',
 			description:
-				'Developed solutions using monday.com, Pipefy, and FuseBase. Integrated REST APIs within company systems. Created dashboards with PowerBI and Fabric. Continuous development and maintenance of company website, blog, and newsletter. Wrote and communicated regularly in English.'
+				'Develop full-stack assessment platforms, portals, and dashboards using TypeScript, React, Next.js, and PostgreSQL. Build REST APIs, authentication flows, and multilingual interfaces with Tailwind CSS. Integrate OpenAI for personalized recommendations and content classification, automate data collection, and generate downloadable PDF reports.'
 		},
 		{
 			company: 'ReThinkingWorks',
