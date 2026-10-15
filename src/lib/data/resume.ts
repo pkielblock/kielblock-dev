@@ -19,13 +19,13 @@ export let DATA = {
 	name: 'Pedro Kielblock',
 	initials: 'PK',
 	url: 'https://kielblock.dev',
-	img: 'https://github.com/pkielblock.png',
+	img: '/avatar.png',
 	location: 'Santo André, São Paulo - Brazil',
 	locationLink: 'https://www.google.com/maps/place/santo+andre',
 	description: 'Backend-focused Software Developer',
 	summary:
 		"I'm a backend-focused software developer who enjoys building websites and tools that make life easier. Whether it's integrating APIs, making dashboards, or just tinkering with new ideas, I love solving problems and learning along the way. I work comfortably in both English and Portuguese.",
-	avatarUrl: 'https://github.com/pkielblock.png',
+	avatarUrl: '/avatar.png',
 	skills: ['Java', 'Spring Boot', 'REST APIs', 'MySQL', 'PostgreSQL'],
 	navbar: [
 		{ href: '/', icon: HomeIcon, label: 'Home' },

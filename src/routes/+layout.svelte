@@ -32,7 +32,7 @@
 	<a href="mailto:pedro@kielblock.dev" aria-label="Email"><Mail size={18} /><span>Email</span></a>
 </nav>
 <footer class="site-footer">
-	<span>Pedro Kielblock</span><span>Santo André, Brazil</span><span
+	<span>Pedro Kielblock · <a href="/privacy">Privacy</a></span><span>Santo André, Brazil</span><span
 		>© {new Date().getFullYear()}</span
 	>
 </footer>
