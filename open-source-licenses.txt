@@ -1,0 +1,3 @@
+@sveltejs/adapter-vercel 6.3.4
+License: MIT
+License source: https://github.com/sveltejs/kit/blob/main/LICENSE
