@@ -39,6 +39,41 @@ try {
 		await page.locator('.workspace-launch').evaluate((el) => getComputedStyle(el).visibility),
 		'hidden'
 	);
+	assert.equal(
+		await page.locator('.desktop-heading, .desktop-bottom, a[href="/privacy"]').count(),
+		0
+	);
+	const folders = page.locator('.explorer-folder');
+	assert.equal(await folders.count(), 2);
+	for (const folder of await folders.all()) {
+		const summary = folder.locator('summary');
+		await summary.click();
+		assert.equal(await folder.getAttribute('open'), null);
+		assert.equal(await folder.locator('nav').isVisible(), false);
+		await summary.focus();
+		await page.keyboard.press('Enter');
+		assert.notEqual(await folder.getAttribute('open'), null);
+	}
+	const journal = page.getByRole('navigation', { name: 'Journal entries' });
+	await journal.getByRole('link', { name: 'about-me.md' }).click();
+	await page.getByRole('heading', { name: 'Background', exact: true }).waitFor();
+	assert.match(await page.locator('.document-tab').textContent(), /about-me\.md/);
+	assert.equal(await journal.getByRole('link').getAttribute('aria-current'), 'page');
+	const codeStyle = await page.locator('.journal-content pre').evaluate((el) => ({
+		background: getComputedStyle(el).backgroundColor,
+		fontSize: getComputedStyle(el).fontSize
+	}));
+	assert.deepEqual(codeStyle, { background: 'rgb(17, 17, 27)', fontSize: '16px' });
+	await page.screenshot({ path: 'docs/journal.png', fullPage: true, animations: 'disabled' });
+	await page.reload();
+	await page.getByRole('heading', { name: 'Background', exact: true }).waitFor();
+	await page.getByRole('link', { name: 'overview.md' }).click();
+	await page
+		.getByRole('navigation', { name: 'Profile links' })
+		.getByRole('link', { name: 'Journal', exact: true })
+		.click();
+	await page.getByRole('heading', { name: '# Journal', exact: true }).waitFor();
+	await page.getByRole('link', { name: 'overview.md' }).click();
 	const faviconHref = await page.locator('link[rel="icon"]').getAttribute('href');
 	assert.ok(faviconHref.includes('favicon.svg?v=3'));
 	const favicon = await context.request.get(new URL(faviconHref, origin).href);
@@ -97,9 +132,9 @@ try {
 
 	await page.getByRole('link', { name: 'experience.md' }).click();
 	await page.getByRole('heading', { name: '# Work experience' }).waitFor();
-	assert.equal(await page.locator('details[open]').count(), 1);
+	assert.equal(await page.locator('.document details[open]').count(), 1);
 	await page.locator('summary').filter({ hasText: 'Intern' }).click();
-	assert.equal(await page.locator('details[open]').count(), 2);
+	assert.equal(await page.locator('.document details[open]').count(), 2);
 	await page.getByRole('link', { name: 'learning.md' }).click();
 	await page.getByRole('button', { name: 'Certifications', exact: true }).click();
 	await page.getByRole('heading', { name: 'C2 Proficiency [202]' }).waitFor();
@@ -130,11 +165,18 @@ try {
 
 	for (const width of [320, 360, 390, 430, 768]) {
 		await page.setViewportSize({ width, height: 844 });
-		for (const section of ['overview', 'about', 'experience', 'learning', 'contact']) {
+		for (const section of [
+			'overview',
+			'about',
+			'experience',
+			'learning',
+			'contact',
+			'journal/about-me'
+		]) {
 			await page.goto(origin + '/#' + section);
 			await page
 				.locator('.document-tab')
-				.filter({ hasText: section + '.md' })
+				.filter({ hasText: section.split('/').at(-1) + '.md' })
 				.waitFor();
 			assert.ok(
 				await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
@@ -244,7 +286,7 @@ try {
 	}
 	assert.deepEqual(errors, []);
 	console.log(
-		'Passed: SVG favicon, opening animation, reduced-motion fallback, navigation, history, disclosures, learning, clipboard success/failure, expansion, deep links, 25 responsive views, mobile landscape, and 3 desktop sizes, reduced motion, keyboard focus, journal, privacy.'
+		'Passed: SVG favicon, opening animation, reduced-motion fallback, navigation, collapsible folders, journal Markdown and deep links, history, disclosures, learning, clipboard success/failure, expansion, deep links, 30 responsive views, mobile landscape, and 3 desktop sizes, reduced motion, keyboard focus, journal, privacy.'
 	);
 } finally {
 	await browser.close();

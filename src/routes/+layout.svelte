@@ -19,5 +19,5 @@
 	<slot />
 </div>
 <footer class="site-footer">
-	<span>© {new Date().getFullYear()} Pedro Kielblock</span><a href="/privacy">Privacy & cookies</a>
+	<span>© {new Date().getFullYear()} Pedro Kielblock</span>
 </footer>

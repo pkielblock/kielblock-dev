@@ -1,5 +1,8 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import type { ComponentType } from 'svelte';
+	import type { Post } from '$lib/types';
+	import { formatDate } from '$lib/utils';
 	import {
 		ArrowUpRight,
 		Award,
@@ -20,6 +23,19 @@
 	} from 'lucide-svelte';
 	import { DATA } from '$lib/data/resume';
 
+	const entries = Object.entries(
+		import.meta.glob<{ default: ComponentType; metadata: Omit<Post, 'slug'> }>(
+			'/src/content/*.md',
+			{ eager: true }
+		)
+	)
+		.map(([path, post]) => ({
+			...post.metadata,
+			content: post.default,
+			slug: path.split('/').at(-1)!.replace(/\.md$/, '')
+		}))
+		.filter((post) => post.published)
+		.sort((a, b) => b.date.localeCompare(a.date));
 	const sections = ['overview', 'about', 'experience', 'learning', 'contact'];
 	const learningSections: Record<string, string> = {
 		education: 'Education',
@@ -27,17 +43,22 @@
 		courses: 'Courses'
 	};
 	$: hash = $page.url.hash.slice(1);
-	$: section = Object.hasOwn(learningSections, hash)
-		? 'learning'
-		: sections.includes(hash)
-			? hash
-			: 'overview';
+	$: entry = entries.find((post) => hash === 'journal/' + post.slug);
+	$: section =
+		hash === 'journal' || entry
+			? 'journal'
+			: Object.hasOwn(learningSections, hash)
+				? 'learning'
+				: sections.includes(hash)
+					? hash
+					: 'overview';
+	$: filename = entry ? entry.slug + '.md' : section + '.md';
 	$: if (Object.hasOwn(learningSections, hash)) learning = learningSections[hash];
 	const shortcuts = [
 		{ label: 'GitHub', href: DATA.contact.social.GitHub.url, icon: Github, external: true },
 		{ label: 'LinkedIn', href: DATA.contact.social.LinkedIn.url, icon: Linkedin, external: true },
 		{ label: 'Email', href: DATA.contact.social.Mail.url, icon: Mail, external: false },
-		{ label: 'Journal', href: '/blog', icon: NotebookPen, external: false },
+		{ label: 'Journal', href: '#journal', icon: NotebookPen, external: false },
 		{ label: 'Education', href: '#education', icon: GraduationCap, external: false },
 		{ label: 'Certifications', href: '#certifications', icon: Award, external: false },
 		{ label: 'Courses', href: '#courses', icon: BookOpen, external: false }
@@ -74,11 +95,6 @@
 			</p>
 		</div>
 	</div>
-	<div class="desktop-heading">
-		<span><span class="accent">[pk]</span> personal workspace</span><a href="/blog"
-			><NotebookPen size={16} /> Journal</a
-		>
-	</div>
 	<section class="terminal-window" aria-label="Pedro Kielblock portfolio">
 		<header class="window-bar">
 			<span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
@@ -94,19 +110,41 @@
 		<div class="window-body">
 			<aside class="explorer">
 				<p class="explorer-label">EXPLORER</p>
-				<p class="folder"><FolderOpen size={17} /> ~/pedro</p>
-				<nav aria-label="Portfolio sections">
-					{#each sections as item, i}
-						<a
-							href={'#' + item}
-							class:selected={section === item}
-							aria-current={section === item ? 'page' : undefined}
-							><span class="file-number" aria-hidden="true">0{i + 1}</span><FileText
-								size={15}
-							/><span>{item}<span class="file-extension">.md</span></span></a
-						>
-					{/each}
-				</nav>
+				<details class="explorer-folder" open>
+					<summary class="folder"
+						><ChevronRight size={15} /><FolderOpen size={17} /> ~/pedro</summary
+					>
+					<nav aria-label="Portfolio sections">
+						{#each sections as item, i}
+							<a
+								href={'#' + item}
+								class:selected={section === item}
+								aria-current={section === item ? 'page' : undefined}
+								><span class="file-number" aria-hidden="true">0{i + 1}</span><FileText
+									size={15}
+								/><span>{item}<span class="file-extension">.md</span></span></a
+							>
+						{/each}
+					</nav>
+				</details>
+				<details class="explorer-folder" open>
+					<summary class="folder"
+						><ChevronRight size={15} /><FolderOpen size={17} /> journal</summary
+					>
+					<nav aria-label="Journal entries">
+						{#each entries as post}
+							<a
+								href={'#journal/' + post.slug}
+								class:selected={entry === post}
+								aria-current={entry === post ? 'page' : undefined}
+								title={post.title}
+							>
+								<FileText size={15} /><span>{post.slug}<span class="file-extension">.md</span></span
+								>
+							</a>
+						{:else}<p class="muted journal-empty">No entries yet.</p>{/each}
+					</nav>
+				</details>
 				<div class="explorer-bottom">
 					<span class="status-dot"></span> Always curious.<br /><span class="muted"
 						>Based in Brazil.</span
@@ -115,7 +153,7 @@
 			</aside>
 			<div class="document">
 				<div class="document-tab">
-					<span><FileText size={15} /> {section}.md</span><span class="accent" aria-hidden="true"
+					<span><FileText size={15} /> {filename}</span><span class="accent" aria-hidden="true"
 						>●</span
 					>
 				</div>
@@ -126,12 +164,29 @@
 					class="document-content"
 					id="document-content"
 					tabindex="0"
-					aria-label={section + ' content'}
+					aria-label={(entry?.title ?? section) + ' content'}
 				>
-					{#key section}
+					{#key filename}
 						<div class="document-inner" class:overview={section === 'overview'}>
-							<p class="breadcrumb">~ / pedro / <span>{section}.md</span></p>
-							{#if section === 'overview'}
+							<p class="breadcrumb">
+								~ / {section === 'journal' ? 'journal' : 'pedro'} / <span>{filename}</span>
+							</p>
+							{#if section === 'journal'}
+								{#if entry}
+									<h1>{entry.title}</h1>
+									<p class="muted">{formatDate(entry.date)}</p>
+									<article class="journal-content prose dark:prose-invert">
+										<svelte:component this={entry.content} />
+									</article>
+								{:else}
+									<h1><span class="accent">#</span> Journal</h1>
+									{#each entries as post}<p class="body-copy">
+											<a class="plain-link" href={'#journal/' + post.slug}>{post.slug}.md</a>
+											<span class="muted">{formatDate(post.date)}</span>
+										</p>
+									{:else}<p class="body-copy muted">No entries yet.</p>{/each}
+								{/if}
+							{:else if section === 'overview'}
 								<pre
 									class="ascii-wordmark full-wordmark"
 									role="img"
@@ -293,11 +348,4 @@
 			>
 		</footer>
 	</section>
-	<div class="desktop-bottom">
-		<span>Made of code & curiosity.</span><a
-			href={DATA.contact.social.GitHub.url}
-			target="_blank"
-			rel="noopener noreferrer">GitHub <ArrowUpRight size={16} /></a
-		>
-	</div>
 </main>
