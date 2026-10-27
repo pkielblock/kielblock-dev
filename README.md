@@ -1,6 +1,6 @@
 # Portfolio
 
-A personal portfolio built with SvelteKit, TypeScript, and Tailwind CSS, deployed on Vercel.
+A personal portfolio built with SvelteKit, Svelte 5, TypeScript, and Tailwind CSS, deployed on Vercel. The build uses Vite 6; existing components use Svelte’s supported legacy syntax.
 
 ## Interface
 
@@ -20,9 +20,10 @@ Edit portfolio content in `src/lib/data/resume.ts`, the homepage in `src/routes/
 ```sh
 bun run check
 bun run build
+bun audit --audit-level=high
 ```
 
-Vercel uses the build and install commands in `vercel.json`. The site includes no analytics, tracking cookies, or third-party font requests. The privacy policy remains a draft: its provider, transfer, and retention details require owner review.
+Vercel uses the build and install commands in `vercel.json`. Images use ordinary local asset imports; no image-optimization plugin or Sharp dependency is needed. The site includes no analytics, tracking cookies, or third-party font requests. The privacy policy remains a draft: its provider, transfer, and retention details require owner review.
 
 The browser regression script uses an existing Playwright installation and Chromium executable, without adding either to the application dependencies. Start the production preview with `bun run preview`, then run:
 

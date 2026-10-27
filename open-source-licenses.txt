@@ -2,6 +2,22 @@
 License: MIT
 License source: https://github.com/sveltejs/kit/blob/main/LICENSE
 
+Vite 6.4.5
+License: MIT
+License source: https://github.com/vitejs/vite/blob/main/LICENSE
+
+@sveltejs/vite-plugin-svelte 5.1.1
+License: MIT
+License source: https://github.com/sveltejs/vite-plugin-svelte/blob/main/LICENSE
+
+Svelte 5.57.3
+License: MIT
+License source: https://github.com/sveltejs/svelte/blob/main/LICENSE.md
+
+svelte-check 4.7.7
+License: MIT
+License source: https://github.com/sveltejs/language-tools/blob/master/LICENSE
+
 JetBrains Mono (locally hosted font)
 License: SIL Open Font License 1.1
 License source: static/fonts/OFL.txt
