@@ -284,6 +284,12 @@ try {
 		const response = await page.goto(origin + route);
 		assert.equal(response.status(), 200, route);
 	}
+	const contentResponse = await context.request.get(origin + '/api/content');
+	assert.equal(contentResponse.status(), 200);
+	const posts = await contentResponse.json();
+	assert.ok(posts.length > 0 && posts.every((post) => post.published));
+	const missingPost = await context.request.get(origin + '/blog/__missing__');
+	assert.equal(missingPost.status(), 404);
 	assert.deepEqual(errors, []);
 	console.log(
 		'Passed: SVG favicon, opening animation, reduced-motion fallback, navigation, collapsible folders, journal Markdown and deep links, history, disclosures, learning, clipboard success/failure, expansion, deep links, 30 responsive views, mobile landscape, and 3 desktop sizes, reduced motion, keyboard focus, journal, privacy.'

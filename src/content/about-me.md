@@ -3,7 +3,7 @@ title: About Me
 description: Information about me.
 date: '2025-10-30'
 categories:
-    - about me
+  - about me
 published: true
 ---
 

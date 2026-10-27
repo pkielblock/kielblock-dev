@@ -1,6 +1,6 @@
 # Portfolio
 
-A personal portfolio built with SvelteKit, Svelte 5, TypeScript, and Tailwind CSS, deployed on Vercel. The build uses Vite 6; existing components use Svelte’s supported legacy syntax.
+A personal portfolio built with SvelteKit 3, Svelte 5, TypeScript 6, and Tailwind CSS, deployed on Vercel. The build uses Vite 8. The workspace uses Svelte 5 state and derived values; shared components retain supported legacy syntax.
 
 ## Interface
 
@@ -15,15 +15,17 @@ bun install --frozen-lockfile
 bun run dev
 ```
 
-Edit portfolio content in `src/lib/data/resume.ts`, the homepage in `src/routes/+page.svelte`, and shared styling in `src/app.css`. Journal entries live in `src/content/*.md`: use frontmatter fields `title`, `description`, `date` (`YYYY-MM-DD`), `categories`, and `published: true`. The filename becomes the journal filename and URL slug; entries appear newest first. Existing `/blog` routes remain available. No environment variables are required.
+Edit portfolio content in `src/lib/data/resume.ts`, the homepage in `src/routes/+page.svelte`, and shared styling in `src/app.css`. Journal entries live in `src/content/*.md`: use frontmatter fields `title`, `description`, `date` (`YYYY-MM-DD`), `categories`, and `published: true`. The filename becomes the journal filename and URL slug; entries appear newest first. Existing `/blog` routes remain available. Journal Markdown is trusted repository content compiled at build time. Card descriptions pass through an HTML sanitizer before rendering. No environment variables are required.
 
 ```sh
 bun run check
+bun run lint
+bun test tests/markdown.test.ts
 bun run build
-bun audit --audit-level=high
+bun audit
 ```
 
-Vercel uses the build and install commands in `vercel.json`. Images use ordinary local asset imports; no image-optimization plugin or Sharp dependency is needed. The site includes no analytics, tracking cookies, or third-party font requests. The privacy policy remains a draft: its provider, transfer, and retention details require owner review.
+Vercel uses the build and install commands in `vercel.json`. The framework, Vercel adapter, and Markdown preprocessor are configured in `vite.config.ts`; application imports use the native `#lib` package alias. `postcss-selector-parser` is overridden to the patched 6.1.5 release because the typography plugin pins an older version; remove the override when that upstream pin is fixed. Images use ordinary local asset imports; no image-optimization plugin or Sharp dependency is needed. The site includes no analytics, tracking cookies, or third-party font requests. The privacy policy remains a draft: its provider, transfer, and retention details require owner review.
 
 The browser regression script uses an existing Playwright installation and Chromium executable, without adding either to the application dependencies. Start the production preview with `bun run preview`, then run:
 

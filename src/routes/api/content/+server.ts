@@ -1,5 +1,4 @@
-import { json } from '@sveltejs/kit';
-import type { Post } from '$lib/types';
+import type { Post } from '#lib/types.js';
 
 async function getPosts() {
 	let posts: Post[] = [];
@@ -13,7 +12,7 @@ async function getPosts() {
 		if (file && typeof file === 'object' && 'metadata' in file && slug) {
 			const metadata = file.metadata as Omit<Post, 'slug'>;
 			const post = { ...metadata, slug } satisfies Post;
-			post.published && posts.push(post);
+			if (post.published) posts.push(post);
 		}
 	}
 
@@ -26,5 +25,5 @@ async function getPosts() {
 
 export async function GET() {
 	const posts = await getPosts();
-	return json(posts);
+	return Response.json(posts);
 }

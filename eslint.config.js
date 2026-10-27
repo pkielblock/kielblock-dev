@@ -21,6 +21,12 @@ export default [
 	},
 	{
 		files: ['**/*.svelte'],
+		rules: {
+			'@typescript-eslint/no-unused-vars': [
+				'error',
+				{ varsIgnorePattern: '^\\$\\$(Props|Events|Slots)$' }
+			]
+		},
 		languageOptions: {
 			parserOptions: {
 				parser: ts.parser
@@ -28,6 +34,6 @@ export default [
 		}
 	},
 	{
-		ignores: ['build/', '.svelte-kit/', 'dist/']
+		ignores: ['build/', '.svelte-kit/', '.vercel/', '.codegraph/', 'dist/']
 	}
 ];

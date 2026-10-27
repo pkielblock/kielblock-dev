@@ -1,10 +1,9 @@
 <script lang="ts">
-	import { formatDate } from '$lib/utils';
-	import BlurFade from '$lib/components/magic/BlurFade.svelte';
+	import { formatDate } from '#lib/utils.js';
+	import BlurFade from '#lib/components/magic/BlurFade.svelte';
 
 	export let data;
 	let BLUR_FADE_DELAY = 0.04;
-	
 </script>
 
 <svelte:head>

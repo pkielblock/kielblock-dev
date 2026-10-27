@@ -1,8 +1,8 @@
 <script lang="ts">
-	import Badge from '$lib/components/ui/badge/badge.svelte';
-	import Button from '$lib/components/ui/button/button.svelte';
-	import Separator from '$lib/components/ui/separator/separator.svelte';
-	import { formatDate } from '$lib/utils';
+	import Badge from '#lib/components/ui/badge/badge.svelte';
+	import Button from '#lib/components/ui/button/button.svelte';
+	import Separator from '#lib/components/ui/separator/separator.svelte';
+	import { formatDate } from '#lib/utils.js';
 
 	export let data;
 </script>

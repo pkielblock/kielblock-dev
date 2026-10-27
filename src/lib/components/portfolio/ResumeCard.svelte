@@ -1,14 +1,13 @@
 <script lang="ts">
-	import * as Avatar from '$lib/components/ui/avatar';
-	import { Badge } from '$lib/components/ui/badge';
-	import { cn } from '$lib/utils';
+	import * as Avatar from '#lib/components/ui/avatar/index.js';
+	import { Badge } from '#lib/components/ui/badge/index.js';
+	import { cn } from '#lib/utils.js';
 	import { ChevronRightIcon } from 'lucide-svelte';
 	import { quartOut } from 'svelte/easing';
 	import { slide } from 'svelte/transition';
 	export let logoUrl: string = '';
 	export let company: string = '';
 	export let title: string = '';
-	export let subtitle: string = '';
 	export let href: string = '';
 	export let badges: string[] = [''];
 	export let description: string = '';

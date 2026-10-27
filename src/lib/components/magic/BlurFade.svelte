@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Motion, AnimatePresence } from 'svelte-motion';
 	import { inview } from 'svelte-inview';
-	import { cn } from '$lib/utils';
+	import { cn } from '#lib/utils.js';
 	export let duration = 0.4;
 	export let delay = 0;
 	export let yOffset = 8;
@@ -18,7 +18,7 @@
 	export { _class as class };
 </script>
 
-<AnimatePresence let:item list={[{ key: id }]}>
+<AnimatePresence list={[{ key: id }]}>
 	<Motion
 		initial="hidden"
 		animate={isInView}

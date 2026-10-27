@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { DATA } from '$lib/data/resume';
+	import { DATA } from '#lib/data/resume.js';
 	import Dock from '../magic/Dock.svelte';
 	import DockIcon from '../magic/DockIcon.svelte';
-	import * as Tooltip from '$lib/components/ui/tooltip';
-	import Separator from '$lib/components/ui/separator/separator.svelte';
+	import * as Tooltip from '#lib/components/ui/tooltip/index.js';
+	import Separator from '#lib/components/ui/separator/separator.svelte';
 	import ModeToggle from './ModeToggle.svelte';
-	import Button from '$lib/components/ui/button/button.svelte';
+	import Button from '#lib/components/ui/button/button.svelte';
 	import { mode } from 'mode-watcher';
 	$: theme = $mode;
 </script>
@@ -38,9 +38,7 @@
 			</DockIcon>
 		{/each}
 		<Separator orientation="vertical" class="h-full" />
-		{#each Object.entries(DATA.contact.social)
-			.filter(([_, social]) => social.navbar)
-			.map(([_, social]) => social) as social}
+		{#each Object.values(DATA.contact.social).filter((social) => social.navbar) as social}
 			<DockIcon {magnification} {mouseX} {distance}>
 				<Tooltip.Root openDelay={300}>
 					<Tooltip.Trigger>

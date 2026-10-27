@@ -1,10 +1,10 @@
 <script>
 	import '../app.css';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 </script>
 
 <a class="skip-link" href="#main">Skip to content</a>
-{#if $page.url.pathname !== '/'}
+{#if page.url.pathname !== '/'}
 	<header class="inner-header">
 		<a href="/" class="accent">[pk] ~/pedro</a>
 		<nav aria-label="Main navigation">
@@ -13,8 +13,8 @@
 	</header>
 {/if}
 <div
-	class:inner-page={$page.url.pathname !== '/'}
-	id={$page.url.pathname !== '/' ? 'main' : undefined}
+	class:inner-page={page.url.pathname !== '/'}
+	id={page.url.pathname !== '/' ? 'main' : undefined}
 >
 	<slot />
 </div>

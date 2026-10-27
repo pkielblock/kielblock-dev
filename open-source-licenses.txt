@@ -1,12 +1,12 @@
-@sveltejs/adapter-vercel 6.3.4
+@sveltejs/adapter-vercel 7.0.1
 License: MIT
 License source: https://github.com/sveltejs/kit/blob/main/LICENSE
 
-Vite 6.4.5
+Vite 8.3.5
 License: MIT
 License source: https://github.com/vitejs/vite/blob/main/LICENSE
 
-@sveltejs/vite-plugin-svelte 5.1.1
+@sveltejs/vite-plugin-svelte 7.3.1
 License: MIT
 License source: https://github.com/sveltejs/vite-plugin-svelte/blob/main/LICENSE
 
@@ -21,3 +21,39 @@ License source: https://github.com/sveltejs/language-tools/blob/master/LICENSE
 JetBrains Mono (locally hosted font)
 License: SIL Open Font License 1.1
 License source: static/fonts/OFL.txt
+
+@sveltejs/kit 3.1.0
+License: MIT
+License source: https://www.npmjs.com/package/@sveltejs/kit/v/3.1.0
+
+typescript 6.0.3
+License: Apache-2.0
+License source: https://www.npmjs.com/package/typescript/v/6.0.3
+
+mdsvex 0.12.8
+License: MIT
+License source: https://www.npmjs.com/package/mdsvex/v/0.12.8
+
+tailwindcss 3.4.19
+License: MIT
+License source: https://www.npmjs.com/package/tailwindcss/v/3.4.19
+
+@tailwindcss/typography 0.5.20
+License: MIT
+License source: https://www.npmjs.com/package/@tailwindcss/typography/v/0.5.20
+
+eslint-plugin-svelte 2.46.1
+License: MIT
+License source: https://www.npmjs.com/package/eslint-plugin-svelte/v/2.46.1
+
+postcss-selector-parser 6.1.5
+License: MIT
+License source: https://www.npmjs.com/package/postcss-selector-parser/v/6.1.5
+
+sanitize-html 2.18.1
+License: MIT
+License source: https://www.npmjs.com/package/sanitize-html/v/2.18.1
+
+@types/sanitize-html 2.16.2
+License: MIT
+License source: https://www.npmjs.com/package/@types/sanitize-html/v/2.16.2

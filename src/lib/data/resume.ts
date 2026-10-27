@@ -1,21 +1,21 @@
-import { CodeIcon, Github, Globe, HomeIcon, NotebookIcon, Youtube } from 'lucide-svelte';
+import { HomeIcon, NotebookIcon } from 'lucide-svelte';
 // Navbar Icons
-import GithubSvg from '$lib/imgs/github.svg';
-import GithubDarkSvg from '$lib/imgs/github-dark.svg';
+import GithubSvg from '#lib/imgs/github.svg';
+import GithubDarkSvg from '#lib/imgs/github-dark.svg';
 
-import GmailSvg from '$lib/imgs/gmail.svg';
-import GmailDarkSvg from '$lib/imgs/gmail-dark.svg';
+import GmailSvg from '#lib/imgs/gmail.svg';
+import GmailDarkSvg from '#lib/imgs/gmail-dark.svg';
 
-import LinkedinSvg from '$lib/imgs/linkedin.svg';
-import LinkedinDarkSvg from '$lib/imgs/linkedin-dark.svg';
+import LinkedinSvg from '#lib/imgs/linkedin.svg';
+import LinkedinDarkSvg from '#lib/imgs/linkedin-dark.svg';
 
-import RtwImg from '$lib/imgs/rtw.svg';
-import EtecImg from '$lib/imgs/etec.png';
-import FatecImg from '$lib/imgs/fatec.png';
-import CulturaInglesaImg from '$lib/imgs/cultura.png';
+import RtwImg from '#lib/imgs/rtw.svg';
+import EtecImg from '#lib/imgs/etec.png';
+import FatecImg from '#lib/imgs/fatec.png';
+import CulturaInglesaImg from '#lib/imgs/cultura.png';
 
 // Your resume data
-export let DATA = {
+export const DATA = {
 	name: 'Pedro Kielblock',
 	initials: 'PK',
 	url: 'https://kielblock.dev',

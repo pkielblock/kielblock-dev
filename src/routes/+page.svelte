@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import type { ComponentType } from 'svelte';
-	import type { Post } from '$lib/types';
-	import { formatDate } from '$lib/utils';
+	import type { Post } from '#lib/types.js';
+	import { formatDate } from '#lib/utils.js';
 	import {
 		ArrowUpRight,
 		Award,
@@ -21,7 +21,7 @@
 		Minimize2,
 		Terminal
 	} from 'lucide-svelte';
-	import { DATA } from '$lib/data/resume';
+	import { DATA } from '#lib/data/resume.js';
 
 	const entries = Object.entries(
 		import.meta.glob<{ default: ComponentType; metadata: Omit<Post, 'slug'> }>(
@@ -42,18 +42,21 @@
 		certifications: 'Certifications',
 		courses: 'Courses'
 	};
-	$: hash = $page.url.hash.slice(1);
-	$: entry = entries.find((post) => hash === 'journal/' + post.slug);
-	$: section =
+	const hash = $derived(page.url.hash.slice(1));
+	const entry = $derived(entries.find((post) => hash === 'journal/' + post.slug));
+	const section = $derived(
 		hash === 'journal' || entry
 			? 'journal'
 			: Object.hasOwn(learningSections, hash)
 				? 'learning'
 				: sections.includes(hash)
 					? hash
-					: 'overview';
-	$: filename = entry ? entry.slug + '.md' : section + '.md';
-	$: if (Object.hasOwn(learningSections, hash)) learning = learningSections[hash];
+					: 'overview'
+	);
+	const filename = $derived(entry ? entry.slug + '.md' : section + '.md');
+	$effect(() => {
+		if (Object.hasOwn(learningSections, hash)) learning = learningSections[hash];
+	});
 	const shortcuts = [
 		{ label: 'GitHub', href: DATA.contact.social.GitHub.url, icon: Github, external: true },
 		{ label: 'LinkedIn', href: DATA.contact.social.LinkedIn.url, icon: Linkedin, external: true },
@@ -63,9 +66,9 @@
 		{ label: 'Certifications', href: '#certifications', icon: Award, external: false },
 		{ label: 'Courses', href: '#courses', icon: BookOpen, external: false }
 	];
-	let expanded = true;
-	let learning = 'Education';
-	let copyStatus = '';
+	let expanded = $state(true);
+	let learning = $state('Education');
+	let copyStatus = $state('');
 	async function copyEmail() {
 		try {
 			await navigator.clipboard.writeText(DATA.contact.email);
@@ -101,7 +104,7 @@
 			<span class="window-title"><Terminal size={16} /> pedro@kielblock.dev: ~</span>
 			<button
 				class="icon-button"
-				on:click={() => (expanded = !expanded)}
+				onclick={() => (expanded = !expanded)}
 				aria-label={expanded ? 'Restore window' : 'Expand window'}
 				aria-pressed={expanded}
 				>{#if expanded}<Minimize2 size={16} />{:else}<Maximize2 size={16} />{/if}</button
@@ -158,7 +161,7 @@
 					>
 				</div>
 				<!-- The scroll pane needs keyboard access. -->
-				<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+				<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
 				<div
 					role="region"
 					class="document-content"
@@ -176,7 +179,7 @@
 									<h1>{entry.title}</h1>
 									<p class="muted">{formatDate(entry.date)}</p>
 									<article class="journal-content prose dark:prose-invert">
-										<svelte:component this={entry.content} />
+										<entry.content />
 									</article>
 								{:else}
 									<h1><span class="accent">#</span> Journal</h1>
@@ -226,7 +229,7 @@
 											href={link.href}
 											target={link.external ? '_blank' : undefined}
 											rel={link.external ? 'noopener noreferrer' : undefined}
-											><svelte:component this={link.icon} size={18} />{link.label}</a
+											><link.icon size={18} />{link.label}</a
 										>
 									{/each}
 								</nav>
@@ -273,18 +276,17 @@
 								<p class="comment">// a work in progress, always</p>
 								<h1><span class="accent">#</span> Keep learning</h1>
 								<div class="learning-tabs" role="group" aria-label="Learning categories">
-									{#each ['Education', 'Certifications', 'Courses'] as category}<button
+									{#each ['Education', 'Certifications', 'Courses'] as category}
+										{@const LearningIcon =
+											category === 'Education'
+												? GraduationCap
+												: category === 'Certifications'
+													? Award
+													: BookOpen}<button
 											class:chosen={learning === category}
 											aria-pressed={learning === category}
-											on:click={() => (learning = category)}
-											><svelte:component
-												this={category === 'Education'
-													? GraduationCap
-													: category === 'Certifications'
-														? Award
-														: BookOpen}
-												size={18}
-											/>{category}</button
+											onclick={() => (learning = category)}
+											><LearningIcon size={18} />{category}</button
 										>{/each}
 								</div>
 								{#if learning === 'Education'}{#each DATA.education as edu}<a
@@ -316,7 +318,7 @@
 								</p>
 								<div class="email-card">
 									<Mail size={20} /><a href={DATA.contact.social.Mail.url}>{DATA.contact.email}</a
-									><button class="icon-button" aria-label="Copy email address" on:click={copyEmail}
+									><button class="icon-button" aria-label="Copy email address" onclick={copyEmail}
 										><Copy size={17} /></button
 									>
 								</div>
