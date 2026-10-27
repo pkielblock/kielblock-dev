@@ -1,19 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <defs>
-    <linearGradient id="rim" x1="0" y1="0" x2="0" y2="1">
-      <stop stop-color="#f1e8ff"/>
-      <stop offset=".35" stop-color="#b596ff"/>
-      <stop offset="1" stop-color="#37204e"/>
-    </linearGradient>
-    <radialGradient id="halo" cx=".5" cy=".35" r=".55">
-      <stop offset=".3" stop-color="#a676ff" stop-opacity=".5"/>
-      <stop offset="1" stop-color="#8040e0" stop-opacity="0"/>
-    </radialGradient>
-  </defs>
-  <rect width="64" height="64" rx="14" fill="#050505"/>
-  <circle cx="32" cy="31" r="29" fill="url(#halo)"/>
-  <ellipse cx="32" cy="33" rx="28" ry="9" transform="rotate(-24 32 33)" fill="none" stroke="#a579ed" stroke-width="2"/>
-  <circle cx="32" cy="31" r="18" fill="#050505" stroke="url(#rim)" stroke-width="2"/>
-  <path d="M14 31a18 18 0 0 1 36 0" fill="none" stroke="#d6c0ff" stroke-width="3" stroke-linecap="round"/>
-  <path d="M22 16a18 18 0 0 1 20 0" fill="none" stroke="#faf5ff" stroke-width="2" stroke-linecap="round"/>
+  <title>kielblockdev</title>
+  <rect x="2" y="2" width="60" height="60" rx="4" fill="#11111b" stroke="#b4befe" stroke-width="3"/>
+  <path d="M3 17h58" stroke="#b4befe" stroke-width="2"/>
+  <g fill="#b4befe">
+    <circle cx="10" cy="10" r="2"/>
+    <circle cx="18" cy="10" r="2"/>
+    <circle cx="26" cy="10" r="2"/>
+  </g>
+  <path d="M17 26v25m15-21L18 40l15 11m7 0h11" fill="none" stroke="#b4befe" stroke-width="4" stroke-linecap="square" stroke-linejoin="miter"/>
 </svg>

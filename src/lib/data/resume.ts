@@ -102,7 +102,7 @@ export let DATA = {
 	education: [
 		{
 			school: 'FATEC São Caetano do Sul - Antonio Russo',
-			href: 'https://fatecscl.edu.br',
+			href: 'https://fatecsaocaetano.cps.sp.gov.br/',
 			degree: 'Technologist in Systems Analysis and Development',
 			logoUrl: FatecImg,
 			start: '2021',
@@ -112,7 +112,7 @@ export let DATA = {
 		},
 		{
 			school: 'ETEC Lauro Gomes',
-			href: 'https://www.etec.sp.gov.br',
+			href: 'http://www.etelg.com.br/',
 			degree: 'Technical Degree in Systems Development',
 			logoUrl: EtecImg,
 			start: '2019',
