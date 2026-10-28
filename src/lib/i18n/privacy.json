@@ -1,0 +1,92 @@
+{
+	"en": {
+		"title": "Privacy and cookies",
+		"description": "How this portfolio handles personal information and browser storage.",
+		"draft": "Draft for owner and legal review. Updated October 27, 2026. Covers LGPD and GDPR.",
+		"sections": [
+			[
+				"Controller and privacy contact",
+				[
+					"Pedro Kielblock, Santo André, Brazil, operates this portfolio. Use the email contact below for privacy questions and requests. No separate data protection officer is designated here."
+				]
+			],
+			[
+				"Information and purposes",
+				[
+					"There are no accounts, signup forms, advertising, or analytics in the application. Vercel hosts it and may process IP addresses, requested URLs, timestamps, and browser details to deliver pages and protect the service. The proposed LGPD/GDPR legal basis is legitimate interests in operating a secure portfolio. If you email Pedro, your address and message are processed to reply, based on legitimate interests or steps requested before a contract. Do not send sensitive personal information."
+				]
+			],
+			[
+				"Cookies and browser storage",
+				[
+					"No analytics or marketing cookies, tracking scripts, third-party fonts, or embeds are loaded. On your first visit, the browser’s preferred language selects Portuguese or English. Only when you choose a language does this site save portfolio-language in first-party localStorage. It holds only en or pt-BR, serves your requested language preference, and is not sent to a server. It lasts until you clear browser site data; change it at any time with EN/PT. Clearing it restores browser-language detection.",
+					"There are no optional tracking categories to accept or reject. External services are contacted only when you open their links. Any future optional tracking must remain blocked until opt-in, with equally accessible rejection and withdrawal controls."
+				]
+			],
+			[
+				"Providers, transfers, and retention",
+				[
+					"Vercel is the hosting provider and may process information outside your country, including in the United States. Email is handled by Pedro’s email provider. Owner review required: identify that provider, confirm processor agreements, processing locations, transfer safeguards such as standard contractual clauses or applicable ANPD mechanisms, and hosting-log and backup retention.",
+					"Proposed email retention: delete ordinary inquiries within 12 months of the last exchange unless needed for an ongoing relationship or legal obligation. Owner review required: confirm and implement this schedule, including backup deletion. Hosting retention depends on the configured Vercel plan and must be confirmed."
+				]
+			],
+			[
+				"Your rights",
+				[
+					"Email the privacy contact to request confirmation of processing, access, correction, deletion, anonymization, blocking or restriction, portability, information about sharing, consent withdrawal, or objection, as applicable under LGPD/GDPR. Only information needed to verify your request should be requested. GDPR requests should receive a response within one month, subject to lawful extensions. Under LGPD, confirmation/access can be provided immediately in simplified form or as a complete declaration within 15 days. You can complain to ANPD or your relevant EU supervisory authority. There is no automated decision-making or profiling; the site is not directed at children."
+				]
+			],
+			[
+				"Security and changes",
+				[
+					"The site is intended to be served over HTTPS. Owner review must confirm provider access controls and retention settings. Changes to processing will be reflected here before new optional services are enabled. This is a policy draft, not legal advice. The October 27 update adds Portuguese, LGPD coverage, and language-preference storage."
+				]
+			]
+		]
+	},
+	"pt-BR": {
+		"title": "Privacidade e cookies",
+		"description": "Como este portfólio trata informações pessoais e o armazenamento do navegador.",
+		"draft": "Rascunho para revisão do responsável e revisão jurídica. Atualizado em 27 de outubro de 2026. Abrange LGPD e GDPR.",
+		"sections": [
+			[
+				"Controlador e contato de privacidade",
+				[
+					"Pedro Kielblock, de Santo André, Brasil, é responsável por este portfólio. Use o e-mail abaixo para dúvidas e solicitações sobre privacidade. Não há um encarregado de proteção de dados designado separadamente nesta política."
+				]
+			],
+			[
+				"Informações e finalidades",
+				[
+					"O aplicativo não tem contas, formulários de cadastro, publicidade nem análise de audiência. A Vercel hospeda o site e pode tratar endereços IP, URLs acessadas, horários e informações do navegador para entregar as páginas e proteger o serviço. A base legal proposta na LGPD e no GDPR é o legítimo interesse na operação de um portfólio seguro. Se você enviar um e-mail a Pedro, seu endereço e sua mensagem serão tratados para responder, com base em legítimo interesse ou procedimentos solicitados antes de um contrato. Não envie dados pessoais sensíveis."
+				]
+			],
+			[
+				"Cookies e armazenamento do navegador",
+				[
+					"Não são carregados cookies de análise ou marketing, scripts de rastreamento, fontes de terceiros nem conteúdo incorporado. Na primeira visita, o idioma preferido do navegador seleciona português ou inglês. Somente quando você escolhe um idioma o site salva portfolio-language no localStorage do próprio site. Esse registro contém apenas en ou pt-BR, atende à preferência de idioma solicitada e não é enviado a um servidor. Ele permanece até você limpar os dados do site no navegador; altere-o a qualquer momento com EN/PT. Ao apagá-lo, a detecção do idioma do navegador é restaurada.",
+					"Não há categorias de rastreamento opcional para aceitar ou rejeitar. Serviços externos só são acessados quando você abre seus links. Se algum rastreamento opcional for adicionado, deverá permanecer bloqueado até sua autorização, com opções igualmente acessíveis de recusa e retirada."
+				]
+			],
+			[
+				"Fornecedores, transferências e retenção",
+				[
+					"A Vercel é a provedora de hospedagem e pode tratar informações fora do seu país, inclusive nos Estados Unidos. O e-mail é tratado pelo provedor de e-mail de Pedro. Revisão necessária pelo responsável: identificar esse provedor e confirmar contratos de tratamento, locais de processamento, garantias de transferência, como cláusulas contratuais padrão ou mecanismos aplicáveis da ANPD, e os prazos de retenção de registros e backups.",
+					"Retenção proposta para e-mails: excluir consultas comuns em até 12 meses após a última interação, salvo necessidade para uma relação em andamento ou obrigação legal. Revisão necessária: confirmar e aplicar esse prazo, inclusive nos backups. A retenção da hospedagem depende do plano configurado na Vercel e deve ser confirmada."
+				]
+			],
+			[
+				"Seus direitos",
+				[
+					"Envie um e-mail ao contato de privacidade para solicitar confirmação de tratamento, acesso, correção, exclusão, anonimização, bloqueio ou restrição, portabilidade, informação sobre compartilhamento, revogação do consentimento ou oposição, conforme a LGPD e o GDPR. Só devem ser solicitadas as informações necessárias para verificar sua identidade. Pedidos sob o GDPR devem receber resposta em até um mês, com as prorrogações permitidas por lei. Na LGPD, confirmação e acesso podem ser fornecidos imediatamente em formato simplificado ou por declaração completa em até 15 dias. Você pode reclamar à ANPD ou à autoridade supervisora competente na União Europeia. Não há decisões automatizadas nem criação de perfis; o site não é direcionado a crianças."
+				]
+			],
+			[
+				"Segurança e alterações",
+				[
+					"O site deve ser servido por HTTPS. O responsável deve confirmar os controles de acesso dos provedores e os prazos de retenção. Mudanças no tratamento serão refletidas aqui antes da ativação de novos serviços opcionais. Esta política é um rascunho, não aconselhamento jurídico. A atualização de 27 de outubro adiciona português, cobertura da LGPD e armazenamento da preferência de idioma."
+				]
+			]
+		]
+	}
+}
