@@ -13,7 +13,7 @@ try {
 	const errors = [];
 	page.on('pageerror', (error) => errors.push(error.message));
 	await page.goto(origin);
-	await page.getByRole('heading', { name: 'Pedro Kielblock_' }).waitFor();
+	await page.getByRole('heading', { name: 'Pedro Kielblock', exact: true }).waitFor();
 	await page.evaluate(() => document.fonts.ready);
 	assert.equal(
 		await page.evaluate(() => getComputedStyle(document.body).backgroundColor),
@@ -32,9 +32,29 @@ try {
 		await page.locator('.terminal-window').evaluate((el) => getComputedStyle(el).animationName),
 		'workspace-open'
 	);
+	assert.equal(await page.locator('.site-footer').count(), 0);
+	const copyright = page
+		.locator('.window-status')
+		.getByText(`© ${new Date().getFullYear()} Pedro Kielblock`);
+	assert.equal(await copyright.count(), 1);
+	await page.locator('.terminal-window').evaluate((el) => {
+		const animation = el.getAnimations()[0];
+		animation.pause();
+		animation.currentTime = 1000;
+	});
+	assert.equal(
+		await copyright.evaluate((el) => getComputedStyle(el.closest('.terminal-window')).opacity),
+		'0'
+	);
+	await page.locator('.terminal-window').evaluate(async (el) => {
+		const animation = el.getAnimations()[0];
+		animation.play();
+		await animation.finished;
+	});
 	await page
-		.locator('.terminal-window')
+		.locator('.workspace-launch')
 		.evaluate((el) => Promise.all(el.getAnimations().map((animation) => animation.finished)));
+	assert.equal(await copyright.isVisible(), true);
 	assert.equal(
 		await page.locator('.workspace-launch').evaluate((el) => getComputedStyle(el).visibility),
 		'hidden'
@@ -141,6 +161,9 @@ try {
 	await page.getByRole('button', { name: 'Courses', exact: true }).click();
 	await page.getByRole('heading', { name: 'Complete Java Course', exact: false }).waitFor();
 	await page.getByRole('link', { name: 'contact.md' }).click();
+	assert.equal(await page.getByRole('link', { name: 'GitHub' }).count(), 0);
+	assert.equal(await page.getByRole('link', { name: 'LinkedIn' }).count(), 0);
+	await page.screenshot({ path: 'docs/contact.png', fullPage: true, animations: 'disabled' });
 	await page.getByRole('button', { name: 'Copy email address' }).click();
 	await page.getByRole('status').filter({ hasText: 'Email copied.' }).waitFor();
 	assert.equal(await page.evaluate(() => navigator.clipboard.readText()), 'pedro@kielblock.dev');
@@ -160,8 +183,12 @@ try {
 	await page.getByRole('heading', { name: '# Keep learning' }).waitFor();
 	await page.goto(origin + '/#about');
 	await page.getByRole('heading', { name: '# A little about me' }).waitFor();
+	const socialLinks = page.locator('.social-links');
+	assert.equal(await socialLinks.getByRole('link', { name: 'GitHub' }).count(), 1);
+	assert.equal(await socialLinks.getByRole('link', { name: 'LinkedIn' }).count(), 1);
+	await page.screenshot({ path: 'docs/about.png', fullPage: true, animations: 'disabled' });
 	await page.goto(origin + '/#constructor');
-	await page.getByRole('heading', { name: 'Pedro Kielblock_' }).waitFor();
+	await page.getByRole('heading', { name: 'Pedro Kielblock', exact: true }).waitFor();
 
 	for (const width of [320, 360, 390, 430, 768]) {
 		await page.setViewportSize({ width, height: 844 });
@@ -214,7 +241,7 @@ try {
 
 	await page.setViewportSize({ width: 844, height: 390 });
 	await page.goto(origin);
-	await page.getByRole('heading', { name: 'Pedro Kielblock_' }).waitFor();
+	await page.getByRole('heading', { name: 'Pedro Kielblock', exact: true }).waitFor();
 	assert.ok(
 		await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
 		'Landscape overflow'
@@ -263,6 +290,7 @@ try {
 		fullPage: true,
 		animations: 'disabled'
 	});
+	assert.equal(await copyright.isVisible(), true);
 	await page.emulateMedia({ reducedMotion: 'reduce' });
 	assert.equal(
 		await page.locator('.terminal-window').evaluate((el) => getComputedStyle(el).animationName),

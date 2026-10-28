@@ -201,7 +201,7 @@
 								<div class="identity">
 									<div>
 										<p class="eyebrow">SOFTWARE DEVELOPER</p>
-										<h1>Pedro Kielblock<span class="accent">_</span></h1>
+										<h1>Pedro Kielblock</h1>
 										<p class="muted">Santo André, São Paulo, BR</p>
 									</div>
 								</div>
@@ -245,12 +245,21 @@
 								<div class="skills">
 									{#each DATA.skills as skill}<span>{skill}</span>{/each}
 								</div>
-								<a
-									class="link-button"
-									href={DATA.contact.social.LinkedIn.url}
-									target="_blank"
-									rel="noopener noreferrer"><Linkedin size={18} /> LinkedIn</a
-								>
+								<div class="social-links">
+									<a
+										class="link-button"
+										href={DATA.contact.social.GitHub.url}
+										target="_blank"
+										rel="noopener noreferrer"
+										><Github size={18} /> GitHub <ArrowUpRight size={16} /></a
+									><a
+										class="link-button"
+										href={DATA.contact.social.LinkedIn.url}
+										target="_blank"
+										rel="noopener noreferrer"
+										><Linkedin size={18} /> LinkedIn <ArrowUpRight size={16} /></a
+									>
+								</div>
 							{:else if section === 'experience'}
 								<p class="comment">// things I've helped build</p>
 								<h1><span class="accent">#</span> Work experience</h1>
@@ -323,21 +332,6 @@
 									>
 								</div>
 								<p class="copy-status" role="status">{copyStatus}</p>
-								<div class="social-links">
-									<a
-										class="link-button"
-										href={DATA.contact.social.GitHub.url}
-										target="_blank"
-										rel="noopener noreferrer"
-										><Github size={18} /> GitHub <ArrowUpRight size={16} /></a
-									><a
-										class="link-button"
-										href={DATA.contact.social.LinkedIn.url}
-										target="_blank"
-										rel="noopener noreferrer"
-										><Linkedin size={18} /> LinkedIn <ArrowUpRight size={16} /></a
-									>
-								</div>
 							{/if}
 						</div>
 					{/key}
@@ -345,9 +339,9 @@
 			</div>
 		</div>
 		<footer class="window-status">
-			<span><span class="status-dot"></span> portfolio / {section}</span><span
-				>UTF-8 <span class="status-separator">│</span> Markdown</span
-			>
+			<span><span class="status-dot"></span> portfolio / {section}</span>
+			<span>© {new Date().getFullYear()} Pedro Kielblock</span>
+			<span>UTF-8 <span class="status-separator">│</span> Markdown</span>
 		</footer>
 	</section>
 </main>

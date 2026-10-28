@@ -18,6 +18,8 @@
 >
 	<slot />
 </div>
-<footer class="site-footer">
-	<span>© {new Date().getFullYear()} Pedro Kielblock</span>
-</footer>
+{#if page.url.pathname !== '/'}
+	<footer class="site-footer">
+		<span>© {new Date().getFullYear()} Pedro Kielblock</span>
+	</footer>
+{/if}
