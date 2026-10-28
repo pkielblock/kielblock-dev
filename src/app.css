@@ -105,13 +105,11 @@ h2 {
 	font-weight: 700;
 }
 .accent,
-.comment,
 .section-heading {
 	color: var(--lavender);
 }
 .muted,
-.breadcrumb,
-.eyebrow {
+.breadcrumb {
 	color: var(--muted-text);
 }
 .skip-link {
@@ -345,9 +343,6 @@ a:hover {
 .breadcrumb span {
 	color: var(--text);
 }
-.comment {
-	margin-bottom: 24px;
-}
 .identity {
 	display: flex;
 	align-items: center;
@@ -383,8 +378,9 @@ a:hover {
 	border-color: var(--lavender);
 }
 
-.eyebrow {
-	margin-bottom: 8px;
+.identity img {
+	object-fit: cover;
+	flex-shrink: 0;
 }
 .identity h1 {
 	margin-bottom: 8px;

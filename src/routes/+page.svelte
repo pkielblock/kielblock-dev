@@ -156,15 +156,12 @@
 					</nav>
 				</details>
 				<div class="explorer-bottom">
-					<span class="status-dot"></span>
 					{$t('Always curious.')}<br /><span class="muted">{$t('Based in Brazil.')}</span>
 				</div>
 			</aside>
 			<div class="document">
 				<div class="document-tab">
-					<span><FileText size={15} /> {filename}</span><span class="accent" aria-hidden="true"
-						>●</span
-					>
+					<span><FileText size={15} /> {filename}</span>
 				</div>
 				<!-- The scroll pane needs keyboard access. -->
 				<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
@@ -206,9 +203,10 @@
 									role="img"
 									aria-label="kielblockdev">{'+-------------+\n| kielblockdev |\n+-------------+'}</pre>
 								<div class="identity">
+									<img src={DATA.avatarUrl} alt="Pedro Kielblock" width="80" height="80" />
 									<div>
-										<p class="eyebrow">{$t('SOFTWARE DEVELOPER')}</p>
 										<h1>Pedro Kielblock</h1>
+										<p>{$t(DATA.description)}</p>
 										<p class="muted">Santo André, São Paulo, BR</p>
 									</div>
 								</div>
@@ -241,7 +239,6 @@
 									{/each}
 								</nav>
 							{:else if section === 'about'}
-								<p class="comment">// {$t('the person behind the code')}</p>
 								<h1><span class="accent">#</span> {$t('A little about me')}</h1>
 								<div class="about-identity">
 									<img src={DATA.avatarUrl} alt="Pedro Kielblock" width="80" height="80" />
@@ -268,7 +265,6 @@
 									>
 								</div>
 							{:else if section === 'experience'}
-								<p class="comment">// {$t("things I've helped build")}</p>
 								<h1><span class="accent">#</span> {$t('Work experience')}</h1>
 								<p class="body-copy muted">{$t('Open a role for the details.')}</p>
 								{#each DATA.work as work, i}<details class="entry" open={i === 0}>
@@ -289,7 +285,6 @@
 										</div>
 									</details>{/each}
 							{:else if section === 'learning'}
-								<p class="comment">// {$t('a work in progress, always')}</p>
 								<h1><span class="accent">#</span> {$t('Keep learning')}</h1>
 								<div class="learning-tabs" role="group" aria-label={$t('Learning categories')}>
 									{#each ['Education', 'Certifications', 'Courses'] as category}
@@ -345,12 +340,9 @@
 												>{/if}
 										</div>{/each}{/if}
 							{:else}
-								<p class="comment">// {$t('good things start with a conversation')}</p>
-								<h1><span class="accent">#</span> {$t("Let's build something good.")}</h1>
+								<h1><span class="accent">#</span> {$t('Contact')}</h1>
 								<p class="body-copy">
-									{$t(
-										'Have an idea, a question, or something interesting to share? My inbox is open.'
-									)}
+									{$t('For project inquiries or questions, email me.')}
 								</p>
 								<div class="email-card">
 									<Mail size={20} /><a href={DATA.contact.social.Mail.url}>{DATA.contact.email}</a

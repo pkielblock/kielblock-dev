@@ -24,7 +24,7 @@ export const DATA = {
 	locationLink: 'https://www.google.com/maps/place/santo+andre',
 	description: 'Backend-focused Software Developer',
 	summary:
-		"I'm a backend-focused software developer who enjoys building websites and tools that make life easier. Whether it's integrating APIs, making dashboards, or just tinkering with new ideas, I love solving problems and learning along the way. I work comfortably in both English and Portuguese.",
+		'I build backend services and web tools at ReThinkingWorks. My work includes APIs, PostgreSQL databases, integrations, and interfaces in English and Portuguese.',
 	avatarUrl: '/avatar.png',
 	skills: ['Java', 'Spring Boot', 'REST APIs', 'MySQL', 'PostgreSQL'],
 	navbar: [

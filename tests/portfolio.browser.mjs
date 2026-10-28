@@ -272,7 +272,7 @@ try {
 		'Landscape overflow'
 	);
 	await page.locator('.explorer a[href="#contact"]').click();
-	await page.getByRole('heading', { name: "# Let's build something good." }).waitFor();
+	await page.getByRole('heading', { name: '# Contact' }).waitFor();
 
 	for (const [width, height] of [
 		[1920, 1080],
@@ -362,7 +362,7 @@ try {
 		['about', '# Um pouco sobre mim'],
 		['experience', '# Experiência profissional'],
 		['learning', '# Continuar aprendendo'],
-		['contact', '# Vamos criar algo bom.'],
+		['contact', '# Contato'],
 		['journal/about-me', 'Formação']
 	]) {
 		await pt.goto(origin + '/#' + section);
