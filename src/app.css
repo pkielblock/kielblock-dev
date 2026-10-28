@@ -566,7 +566,7 @@ a:hover {
 }
 .expanded .terminal-window {
 	aspect-ratio: auto;
-	height: calc(100svh - 120px);
+	height: calc(100svh - 32px);
 	min-height: 480px;
 	max-height: none;
 }
@@ -831,7 +831,7 @@ a:hover {
 }
 @media (max-width: 900px) {
 	.expanded .terminal-window {
-		min-height: calc(100svh - 160px);
+		min-height: calc(100svh - 36px);
 	}
 	.overview .personal-intro {
 		max-width: 58ch;
@@ -891,7 +891,41 @@ a:hover {
 			width: 0;
 		}
 		to {
-			width: 16ch;
+			width: var(--command-width, 16ch);
 		}
+	}
+}
+
+.window-controls,
+.language-switch {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+.language-switch button {
+	background: transparent;
+	border: 1px solid var(--line);
+	padding: 2px 6px;
+	font-size: 16px;
+}
+.language-switch button[aria-pressed='true'] {
+	background: var(--lavender);
+	color: var(--crust);
+}
+.course-link {
+	margin-top: 12px;
+}
+@media (max-width: 600px) {
+	.window-title {
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		min-width: 0;
+	}
+	.window-controls {
+		flex-shrink: 0;
+	}
+	.window-dots {
+		flex-shrink: 0;
 	}
 }

@@ -59,10 +59,8 @@ try {
 		await page.locator('.workspace-launch').evaluate((el) => getComputedStyle(el).visibility),
 		'hidden'
 	);
-	assert.equal(
-		await page.locator('.desktop-heading, .desktop-bottom, a[href="/privacy"]').count(),
-		0
-	);
+	assert.equal(await page.locator('.desktop-heading, .desktop-bottom').count(), 0);
+	assert.equal(await page.locator('.window-status a[href="/privacy"]').count(), 1);
 	const folders = page.locator('.explorer-folder');
 	assert.equal(await folders.count(), 2);
 	for (const folder of await folders.all()) {
@@ -158,8 +156,35 @@ try {
 	await page.getByRole('link', { name: 'learning.md' }).click();
 	await page.getByRole('button', { name: 'Certifications', exact: true }).click();
 	await page.getByRole('heading', { name: 'C2 Proficiency [202]' }).waitFor();
+	assert.deepEqual(
+		await page.locator('a.learning-entry').evaluateAll((links) => links.map((link) => link.href)),
+		[
+			'https://www.cambridgeenglish.org/exams-and-tests/qualifications/proficiency/',
+			'https://www.ets.org/toeic/about/listening-reading.html',
+			'https://www.cambridgeenglish.org/exams-and-tests/qualifications/advanced/',
+			'https://www.cambridgeenglish.org/exams-and-tests/qualifications/first/'
+		]
+	);
+	await page.screenshot({
+		path: 'docs/certifications.png',
+		fullPage: true,
+		animations: 'disabled'
+	});
 	await page.getByRole('button', { name: 'Courses', exact: true }).click();
 	await page.getByRole('heading', { name: 'Complete Java Course', exact: false }).waitFor();
+	assert.equal(await page.locator('a[href="/certificates/java-en.pdf"]').count(), 1);
+	assert.equal(await page.locator('a[href="/certificates/iot.pdf"]').count(), 1);
+	assert.equal(
+		await page.getByRole('link', { name: 'View course' }).getAttribute('href'),
+		'https://www.udemy.com/share/101scA3@-D140oZP3RgZDsD-bivzG16DSDWYmgIvpqdnzxmMrQyOq31_x6UtNeJHKkAgrUdt/'
+	);
+	for (const file of ['java-en.pdf', 'java-pt-BR.pdf', 'iot.pdf']) {
+		const response = await context.request.get(origin + '/certificates/' + file);
+		assert.equal(response.status(), 200);
+		assert.match(response.headers()['content-type'], /application\/pdf/);
+		assert.equal((await response.body()).subarray(0, 5).toString(), '%PDF-');
+	}
+	await page.screenshot({ path: 'docs/courses.png', fullPage: true, animations: 'disabled' });
 	await page.getByRole('link', { name: 'contact.md' }).click();
 	assert.equal(await page.getByRole('link', { name: 'GitHub' }).count(), 0);
 	assert.equal(await page.getByRole('link', { name: 'LinkedIn' }).count(), 0);
@@ -271,7 +296,9 @@ try {
 			};
 		});
 		assert.ok(
-			layout.width >= width - 40 && layout.height >= height - 140 && layout.bottom <= height,
+			layout.width >= width - 40 &&
+				Math.abs(layout.height - (height - 32)) < 2 &&
+				Math.abs(layout.bottom - (height - 16)) < 2,
 			`Viewport fill at ${width}x${height}`
 		);
 		assert.ok(layout.centered < 2, `Content centered at ${width}px`);
@@ -318,9 +345,84 @@ try {
 	assert.ok(posts.length > 0 && posts.every((post) => post.published));
 	const missingPost = await context.request.get(origin + '/blog/__missing__');
 	assert.equal(missingPost.status(), 404);
+
+	const portugueseContext = await browser.newContext({
+		locale: 'pt-BR',
+		reducedMotion: 'reduce',
+		viewport: { width: 1440, height: 900 }
+	});
+	const pt = await portugueseContext.newPage();
+	pt.on('pageerror', (error) => errors.push(error.message));
+	await pt.goto(origin);
+	await pt.getByRole('link', { name: 'visão-geral.md', exact: true }).waitFor();
+	assert.equal(await pt.locator('html').getAttribute('lang'), 'pt-BR');
+	assert.equal(await pt.evaluate(() => localStorage.getItem('portfolio-language')), null);
+	await pt.screenshot({ path: 'docs/portfolio-portuguese.png', fullPage: true });
+	for (const [section, heading] of [
+		['about', '# Um pouco sobre mim'],
+		['experience', '# Experiência profissional'],
+		['learning', '# Continuar aprendendo'],
+		['contact', '# Vamos criar algo bom.'],
+		['journal/about-me', 'Formação']
+	]) {
+		await pt.goto(origin + '/#' + section);
+		await pt.getByRole('heading', { name: heading, exact: true }).waitFor();
+	}
+	await pt.goto(origin + '/#courses');
+	await pt.getByRole('link', { name: /Curso completo de Java/ }).waitFor();
+	assert.equal(await pt.locator('a[href="/certificates/java-pt-BR.pdf"]').count(), 1);
+	assert.equal(await pt.getByRole('link', { name: 'Ver curso' }).count(), 1);
+	await pt.getByRole('button', { name: 'English', exact: true }).click();
+	await pt.getByRole('link', { name: /Complete Java Course/ }).waitFor();
+	assert.equal(await pt.evaluate(() => localStorage.getItem('portfolio-language')), 'en');
+	await pt.reload();
+	await pt.getByRole('link', { name: /Complete Java Course/ }).waitFor();
+	assert.equal(await pt.locator('html').getAttribute('lang'), 'en');
+	await pt.getByRole('button', { name: 'Português', exact: true }).click();
+	for (const route of ['/blog', '/blog/about-me', '/privacy']) {
+		await pt.goto(origin + route);
+		await pt.getByRole('button', { name: 'Português', exact: true }).waitFor();
+		await pt.waitForFunction(() => document.documentElement.lang === 'pt-BR');
+	}
+	await pt.getByRole('heading', { name: 'Privacidade e cookies' }).waitFor();
+	assert.ok((await pt.locator('main').textContent()).includes('portfolio-language'));
+	for (const width of [320, 390, 768]) {
+		await pt.setViewportSize({ width, height: 844 });
+		for (const section of [
+			'overview',
+			'about',
+			'experience',
+			'courses',
+			'certifications',
+			'contact'
+		]) {
+			await pt.goto(origin + '/#' + section);
+			await pt.waitForFunction(() => document.documentElement.lang === 'pt-BR');
+			assert.ok(
+				await pt.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
+				`Portuguese overflow at ${width}px in ${section}`
+			);
+		}
+	}
+	await portugueseContext.close();
+	const blockedStorage = await browser.newContext({ locale: 'pt-BR', reducedMotion: 'reduce' });
+	await blockedStorage.addInitScript(() => {
+		Object.defineProperty(window, 'localStorage', {
+			get() {
+				throw new DOMException('Storage blocked', 'SecurityError');
+			}
+		});
+	});
+	const blockedPage = await blockedStorage.newPage();
+	blockedPage.on('pageerror', (error) => errors.push(error.message));
+	await blockedPage.goto(origin);
+	await blockedPage.getByRole('link', { name: 'visão-geral.md', exact: true }).waitFor();
+	await blockedPage.getByRole('button', { name: 'English', exact: true }).click();
+	await blockedPage.getByRole('link', { name: 'overview.md', exact: true }).waitFor();
+	await blockedStorage.close();
 	assert.deepEqual(errors, []);
 	console.log(
-		'Passed: SVG favicon, opening animation, reduced-motion fallback, navigation, collapsible folders, journal Markdown and deep links, history, disclosures, learning, clipboard success/failure, expansion, deep links, 30 responsive views, mobile landscape, and 3 desktop sizes, reduced motion, keyboard focus, journal, privacy.'
+		'Passed: SVG favicon, opening animation, reduced-motion fallback, navigation, collapsible folders, journal Markdown and deep links, history, disclosures, learning, clipboard success/failure, expansion, deep links, 30 responsive views, mobile landscape, and 3 desktop sizes, reduced motion, keyboard focus, journal, privacy, browser-language detection, saved language preference, blocked storage, certificate PDFs, course links, and Portuguese mobile views.'
 	);
 } finally {
 	await browser.close();

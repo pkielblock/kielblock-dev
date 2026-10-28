@@ -134,6 +134,7 @@ export const DATA = {
 	certificates: [
 		{
 			name: 'C2 Proficiency',
+			href: 'https://www.cambridgeenglish.org/exams-and-tests/qualifications/proficiency/',
 			score: '202',
 			issuer: 'Cambridge Assessment English',
 			date: '2024',
@@ -141,6 +142,7 @@ export const DATA = {
 		},
 		{
 			name: 'TOEIC',
+			href: 'https://www.ets.org/toeic/about/listening-reading.html',
 			score: '925',
 			issuer: 'ETS',
 			date: '2023',
@@ -148,6 +150,7 @@ export const DATA = {
 		},
 		{
 			name: 'C1 Advanced',
+			href: 'https://www.cambridgeenglish.org/exams-and-tests/qualifications/advanced/',
 			score: '185',
 			issuer: 'Cambridge Assessment English',
 			date: '2021',
@@ -155,6 +158,7 @@ export const DATA = {
 		},
 		{
 			name: 'B2 First',
+			href: 'https://www.cambridgeenglish.org/exams-and-tests/qualifications/first/',
 			score: '163',
 			issuer: 'Cambridge Assessment English',
 			date: '2018',
@@ -166,12 +170,19 @@ export const DATA = {
 			name: 'Complete Java Course - REST API/Spring Boot/OOP/JPA',
 			duration: '54.5 hours',
 			provider: 'Udemy',
+			href: '/certificates/java-en.pdf',
+			hrefPt: '/certificates/java-pt-BR.pdf',
+			courseUrl:
+				'https://www.udemy.com/share/101scA3@-D140oZP3RgZDsD-bivzG16DSDWYmgIvpqdnzxmMrQyOq31_x6UtNeJHKkAgrUdt/',
 			date: '2023'
 		},
 		{
 			name: 'Extension: Internet of Things and Smart Environments',
 			duration: '32 hours',
 			provider: 'FATEC',
+			href: '/certificates/iot.pdf',
+			hrefPt: '/certificates/iot.pdf',
+			courseUrl: '',
 			date: '2021'
 		}
 	]

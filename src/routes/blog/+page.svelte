@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { locale, t } from '#lib/i18n/index.js';
 	import { formatDate } from '#lib/utils.js';
 	import BlurFade from '#lib/components/magic/BlurFade.svelte';
 
@@ -7,11 +8,11 @@
 </script>
 
 <svelte:head>
-	<title>Blog</title>
+	<title>{$t('Journal')}</title>
 </svelte:head>
 
 <BlurFade delay={BLUR_FADE_DELAY}>
-	<h1 class="mb-8 text-2xl font-medium tracking-tighter">Blog</h1>
+	<h1 class="mb-8 text-2xl font-medium tracking-tighter">{$t('Journal')}</h1>
 </BlurFade>
 <!-- Posts -->
 <section>
@@ -21,9 +22,9 @@
 				<BlurFade delay={BLUR_FADE_DELAY * 2 + id * 0.05}>
 					<a class="mb-4 flex flex-col space-y-1" href="/blog/{post.slug}">
 						<div class="flex w-full flex-col">
-							<p class="tracking-tight">{post.title}</p>
+							<p class="tracking-tight">{$t(post.title)}</p>
 							<p class="h-6 text-xs text-muted-foreground">
-								{formatDate(post.date)}
+								{formatDate(post.date, 'medium', $locale)}
 							</p>
 						</div>
 					</a>
