@@ -1,28 +1,24 @@
 <script lang="ts">
 	import { locale, t } from '#lib/i18n/index.js';
-	import LanguageSwitch from '#lib/components/LanguageSwitch.svelte';
+	import Prompt from '#lib/components/Prompt.svelte';
 	import PortugueseAbout from '../content/pt-BR/about-me.md';
 	import { page } from '$app/state';
 	import type { ComponentType } from 'svelte';
 	import type { Post } from '#lib/types.js';
 	import { formatDate } from '#lib/utils.js';
+	import { learningCategories, sectionOf } from '#lib/sections.js';
 	import {
 		ArrowUpRight,
 		Award,
 		BookOpen,
-		BriefcaseBusiness,
-		GraduationCap,
-		NotebookPen,
 		ChevronRight,
 		Copy,
 		FileText,
-		FolderOpen,
+		Folder,
 		Github,
+		GraduationCap,
 		Linkedin,
-		Mail,
-		Maximize2,
-		Minimize2,
-		Terminal
+		Mail
 	} from 'lucide-svelte';
 	import { DATA } from '#lib/data/resume.js';
 
@@ -39,45 +35,56 @@
 		}))
 		.filter((post) => post.published)
 		.sort((a, b) => b.date.localeCompare(a.date));
-	const sections = ['overview', 'about', 'experience', 'learning', 'contact'];
-	const learningSections: Record<string, string> = {
+	const learningLabels: Record<string, string> = {
 		education: 'Education',
 		certifications: 'Certifications',
 		courses: 'Courses'
 	};
+	const ansi = ['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
+	const icon = { size: 16, strokeWidth: 1.75 };
+	const external = { target: '_blank', rel: 'noopener noreferrer' };
+	const { GitHub, LinkedIn, Mail: Email } = DATA.contact.social;
+
 	const hash = $derived(page.url.hash.slice(1));
+	const section = $derived(sectionOf(hash));
 	const entry = $derived(entries.find((post) => hash === 'journal/' + post.slug));
-	const section = $derived(
-		hash === 'journal' || entry
-			? 'journal'
-			: Object.hasOwn(learningSections, hash)
-				? 'learning'
-				: sections.includes(hash)
-					? hash
-					: 'overview'
-	);
-	const filename = $derived(entry ? entry.slug + '.md' : $t(section) + '.md');
-	$effect(() => {
-		if (Object.hasOwn(learningSections, hash)) learning = learningSections[hash];
-	});
-	const shortcuts = [
-		{ label: 'GitHub', href: DATA.contact.social.GitHub.url, icon: Github, external: true },
-		{ label: 'LinkedIn', href: DATA.contact.social.LinkedIn.url, icon: Linkedin, external: true },
-		{ label: 'Email', href: DATA.contact.social.Mail.url, icon: Mail, external: false },
-		{ label: 'Journal', href: '#journal', icon: NotebookPen, external: false },
-		{ label: 'Education', href: '#education', icon: GraduationCap, external: false },
-		{ label: 'Certifications', href: '#certifications', icon: Award, external: false },
-		{ label: 'Courses', href: '#courses', icon: BookOpen, external: false }
-	];
-	let expanded = $state(true);
-	let learning = $state('Education');
+	let learning = $state('education');
 	let copyStatus = $state('');
+	// The opening sequence plays on the section the visit starts on, once.
+	let boot = $state(true);
+	let opened: string | undefined;
+	$effect(() => {
+		if (learningCategories.includes(hash)) learning = hash;
+		document.getElementById('screen')?.scrollTo(0, 0);
+		if (opened === undefined) opened = hash;
+		else if (hash !== opened) boot = false;
+	});
+	const command = $derived(
+		section === 'overview'
+			? 'fastfetch'
+			: section === 'journal'
+				? entry
+					? `cat ${$t('journal')}/${entry.slug}.md`
+					: `ls -l ${$t('journal')}`
+				: section === 'learning'
+					? `cat ${$t('learning')}/${$t(learningLabels[learning]).toLowerCase()}.md`
+					: `cat ${$t(section)}.md`
+	);
+	const links = $derived([
+		{ name: 'github', href: GitHub.url, icon: Github },
+		{ name: 'linkedin', href: LinkedIn.url, icon: Linkedin },
+		{ name: $t('Email').toLowerCase(), href: Email.url, icon: Mail },
+		{ name: $t('journal') + '/', href: '#journal', icon: Folder },
+		{ name: $t('Education').toLowerCase() + '.md', href: '#education', icon: GraduationCap },
+		{ name: $t('Certifications').toLowerCase() + '.md', href: '#certifications', icon: Award },
+		{ name: $t('Courses').toLowerCase() + '.md', href: '#courses', icon: BookOpen }
+	]);
 	async function copyEmail() {
 		try {
 			await navigator.clipboard.writeText(DATA.contact.email);
 			copyStatus = 'Email copied.';
 		} catch {
-			copyStatus = 'Copy unavailable. Use the email link below.';
+			copyStatus = 'Copy unavailable. Use the email link.';
 		}
 	}
 </script>
@@ -91,281 +98,180 @@
 	<meta property="og:image" content={DATA.img} />
 </svelte:head>
 
-<main id="main" class="desktop" class:expanded>
-	<div class="workspace-launch" aria-hidden="true">
-		<Terminal size={18} />
-		<div>
-			<p class="launch-prompt">pedro@kielblockdev:~$</p>
-			<p>
-				<span class="launch-command" style:--command-width={$locale === 'pt-BR' ? '18ch' : '16ch'}
-					>open {$t('overview')}.md</span
-				><span class="launch-cursor">_</span>
-			</p>
-		</div>
-	</div>
-	<section class="terminal-window" aria-label={$t('Pedro Kielblock portfolio')}>
-		<header class="window-bar">
-			<span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-			<span class="window-title"><Terminal size={16} /> pedro@kielblock.dev: ~</span>
-			<div class="window-controls">
-				<LanguageSwitch /><button
-					class="icon-button"
-					onclick={() => (expanded = !expanded)}
-					aria-label={expanded ? $t('Restore window') : $t('Expand window')}
-					aria-pressed={expanded}
-					>{#if expanded}<Minimize2 size={16} />{:else}<Maximize2 size={16} />{/if}</button
-				>
-			</div>
-		</header>
-		<div class="window-body">
-			<aside class="explorer">
-				<p class="explorer-label">{$t('EXPLORER')}</p>
-				<details class="explorer-folder" open>
-					<summary class="folder"
-						><ChevronRight size={15} /><FolderOpen size={17} /> ~/pedro</summary
-					>
-					<nav aria-label={$t('Portfolio sections')}>
-						{#each sections as item, i}
-							<a
-								href={'#' + item}
-								class:selected={section === item}
-								aria-current={section === item ? 'page' : undefined}
-								><span class="file-number" aria-hidden="true">0{i + 1}</span><FileText
-									size={15}
-								/><span>{$t(item)}<span class="file-extension">.md</span></span></a
-							>
+{#key entry?.slug ?? section}
+	<div class="output" class:boot style:--n={command.length}>
+		<Prompt {command} typed={boot} />
+		{#if section === 'overview'}
+			<div class="result fetch">
+				<img src={DATA.avatarUrl} alt="Pedro Kielblock" width="168" height="168" />
+				<div>
+					<p aria-hidden="true">
+						<span class="accent">pedro</span>@<span class="accent">kielblockdev</span>
+					</p>
+					<p class="k-muted" aria-hidden="true">------------------</p>
+					<dl>
+						<dt>{$t('Name')}</dt>
+						<dd><h1>{DATA.name}</h1></dd>
+						<dt>{$t('Role')}</dt>
+						<dd>{$t(DATA.description)}</dd>
+						<dt>{$t('Location')}</dt>
+						<dd>Santo André, São Paulo, BR</dd>
+						<dt>{$t('Company')}</dt>
+						<dd><a href={DATA.work[0].href} {...external}>{DATA.work[0].company}</a></dd>
+						<dt>{$t('Toolkit')}</dt>
+						<dd>{DATA.skills.join(' · ')}</dd>
+					</dl>
+					<div class="palette" aria-hidden="true">
+						{#each ['', 'bright-'] as tone}
+							<div>
+								{#each ansi as color}<i style:background={`var(--ansi-${tone}${color})`}></i>{/each}
+							</div>
 						{/each}
-					</nav>
-				</details>
-				<details class="explorer-folder" open>
-					<summary class="folder"
-						><ChevronRight size={15} /><FolderOpen size={17} /> {$t('journal')}</summary
-					>
-					<nav aria-label={$t('Journal entries')}>
-						{#each entries as post}
-							<a
-								href={'#journal/' + post.slug}
-								class:selected={entry === post}
-								aria-current={entry === post ? 'page' : undefined}
-								title={$t(post.title)}
-							>
-								<FileText size={15} /><span>{post.slug}<span class="file-extension">.md</span></span
-								>
-							</a>
-						{:else}<p class="muted journal-empty">{$t('No entries yet.')}</p>{/each}
-					</nav>
-				</details>
-				<div class="explorer-bottom">
-					{$t('Always curious.')}<br /><span class="muted">{$t('Based in Brazil.')}</span>
-				</div>
-			</aside>
-			<div class="document">
-				<div class="document-tab">
-					<span><FileText size={15} /> {filename}</span>
-				</div>
-				<!-- The scroll pane needs keyboard access. -->
-				<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
-				<div
-					role="region"
-					class="document-content"
-					id="document-content"
-					tabindex="0"
-					aria-label={$t(entry?.title ?? section) + ' ' + $t('content')}
-				>
-					{#key filename}
-						<div class="document-inner" class:overview={section === 'overview'}>
-							<p class="breadcrumb">
-								~ / {section === 'journal' ? 'journal' : 'pedro'} / <span>{filename}</span>
-							</p>
-							{#if section === 'journal'}
-								{#if entry}
-									<h1>{$t(entry.title)}</h1>
-									<p class="muted">{formatDate(entry.date, 'medium', $locale)}</p>
-									<article class="journal-content prose dark:prose-invert">
-										{#if $locale === 'pt-BR' && entry.slug === 'about-me'}<PortugueseAbout
-											/>{:else}<entry.content />{/if}
-									</article>
-								{:else}
-									<h1><span class="accent">#</span> {$t('Journal')}</h1>
-									{#each entries as post}<p class="body-copy">
-											<a class="plain-link" href={'#journal/' + post.slug}>{post.slug}.md</a>
-											<span class="muted">{formatDate(post.date, 'medium', $locale)}</span>
-										</p>
-									{:else}<p class="body-copy muted">{$t('No entries yet.')}</p>{/each}
-								{/if}
-							{:else if section === 'overview'}
-								<pre
-									class="ascii-wordmark full-wordmark"
-									role="img"
-									aria-label="kielblockdev">{" _    _      _ _     _            _       _\n| | _(_) ___| | |__ | | ___   ___| | ____| | _____   __\n| |/ / |/ _ \\ | '_ \\| |/ _ \\ / __| |/ / _` |/ _ \\ \\ / /\n|   <| |  __/ | |_) | | (_) | (__|   < (_| |  __/\\ V /\n|_|\\_\\_|\\___|_|_.__/|_|\\___/ \\___|_|\\_\\__,_|\\___| \\_/"}</pre>
-								<pre
-									class="ascii-wordmark compact-wordmark"
-									role="img"
-									aria-label="kielblockdev">{'+-------------+\n| kielblockdev |\n+-------------+'}</pre>
-								<div class="identity">
-									<img src={DATA.avatarUrl} alt="Pedro Kielblock" width="80" height="80" />
-									<div>
-										<h1>Pedro Kielblock</h1>
-										<p>{$t(DATA.description)}</p>
-										<p class="muted">Santo André, São Paulo, BR</p>
-									</div>
-								</div>
-								<div class="personal-intro">
-									<p>
-										{$t(
-											'At ReThinkingWorks, I build assessment platforms, portals, and dashboards. I especially enjoy the backend: designing APIs, working with databases, and getting different systems to work together.'
-										)}
-									</p>
-									<p>
-										{$t(
-											'Outside work, I tinker with Linux, self-hosted services, and small tools for my own setup. I like understanding how things work and improving the things I use every day.'
-										)}
-									</p>
-								</div>
-								<div class="actions">
-									<a class="primary-button" href="#experience"
-										><BriefcaseBusiness size={18} /> {$t('Experience')}</a
-									>
-								</div>
-								<nav class="shortcut-links" aria-label={$t('Profile links')}>
-									{#each shortcuts as link}
-										<a
-											class="link-button"
-											href={link.href}
-											target={link.external ? '_blank' : undefined}
-											rel={link.external ? 'noopener noreferrer' : undefined}
-											><link.icon size={18} />{$t(link.label)}</a
-										>
-									{/each}
-								</nav>
-							{:else if section === 'about'}
-								<h1><span class="accent">#</span> {$t('A little about me')}</h1>
-								<div class="about-identity">
-									<img src={DATA.avatarUrl} alt="Pedro Kielblock" width="80" height="80" />
-									<p>Pedro Kielblock<br /><span class="muted">{$t(DATA.description)}</span></p>
-								</div>
-								<p class="body-copy">{$t(DATA.summary)}</p>
-								<h2 class="section-heading">## {$t('My toolkit')}</h2>
-								<div class="skills">
-									{#each DATA.skills as skill}<span>{skill}</span>{/each}
-								</div>
-								<div class="social-links">
-									<a
-										class="link-button"
-										href={DATA.contact.social.GitHub.url}
-										target="_blank"
-										rel="noopener noreferrer"
-										><Github size={18} /> GitHub <ArrowUpRight size={16} /></a
-									><a
-										class="link-button"
-										href={DATA.contact.social.LinkedIn.url}
-										target="_blank"
-										rel="noopener noreferrer"
-										><Linkedin size={18} /> LinkedIn <ArrowUpRight size={16} /></a
-									>
-								</div>
-							{:else if section === 'experience'}
-								<h1><span class="accent">#</span> {$t('Work experience')}</h1>
-								<p class="body-copy muted">{$t('Open a role for the details.')}</p>
-								{#each DATA.work as work, i}<details class="entry" open={i === 0}>
-										<summary
-											><span class="entry-date">{$t(work.start)} — {$t(work.end)}</span><span
-												class="entry-title"
-												>{$t(work.title)}<span class="muted">{work.company}</span></span
-											><ChevronRight size={18} /></summary
-										>
-										<div class="entry-description">
-											<p>{$t(work.description)}</p>
-											<a
-												class="plain-link"
-												href={work.href}
-												target="_blank"
-												rel="noopener noreferrer">Visit company <ArrowUpRight size={16} /></a
-											>
-										</div>
-									</details>{/each}
-							{:else if section === 'learning'}
-								<h1><span class="accent">#</span> {$t('Keep learning')}</h1>
-								<div class="learning-tabs" role="group" aria-label={$t('Learning categories')}>
-									{#each ['Education', 'Certifications', 'Courses'] as category}
-										{@const LearningIcon =
-											category === 'Education'
-												? GraduationCap
-												: category === 'Certifications'
-													? Award
-													: BookOpen}<button
-											class:chosen={learning === category}
-											aria-pressed={learning === category}
-											onclick={() => (learning = category)}
-											><LearningIcon size={18} />{category}</button
-										>{/each}
-								</div>
-								{#if learning === 'Education'}{#each DATA.education as edu}<a
-											class="learning-entry"
-											href={edu.href}
-											target="_blank"
-											rel="noopener noreferrer"
-											><span class="muted">{edu.start} — {edu.end}</span>
-											<h2>{$t(edu.degree)}</h2>
-											<p class="muted">{edu.school} <ArrowUpRight size={16} /></p></a
-										>{/each}
-								{:else if learning === 'Certifications'}{#each DATA.certificates as cert}<a
-											class="learning-entry"
-											href={cert.href}
-											target="_blank"
-											rel="noopener noreferrer"
-										>
-											<span class="muted">{cert.date}</span>
-											<h2>{cert.name} <span class="accent">[{cert.score}]</span></h2>
-											<p class="muted">
-												{cert.issuer} · {$t('Score')}: {cert.score}
-												<ArrowUpRight size={16} />
-											</p>
-										</a>{/each}
-								{:else}{#each DATA.courses as course}<div class="learning-entry">
-											<a
-												href={$locale === 'pt-BR' ? course.hrefPt : course.href}
-												target="_blank"
-												rel="noopener noreferrer"
-											>
-												<span class="muted">{course.date} · {$t(course.duration)}</span>
-												<h2>{$t(course.name)} <ArrowUpRight size={16} /></h2>
-												<p class="muted">{course.provider} · {$t('Certificate (PDF)')}</p></a
-											>{#if course.courseUrl}<a
-													class="plain-link course-link"
-													href={course.courseUrl}
-													target="_blank"
-													rel="noopener noreferrer"
-													>{$t('View course')} <ArrowUpRight size={16} /></a
-												>{/if}
-										</div>{/each}{/if}
-							{:else}
-								<h1><span class="accent">#</span> {$t('Contact')}</h1>
-								<p class="body-copy">
-									{$t('For project inquiries or questions, email me.')}
-								</p>
-								<div class="email-card">
-									<Mail size={20} /><a href={DATA.contact.social.Mail.url}>{DATA.contact.email}</a
-									><button
-										class="icon-button"
-										aria-label={$t('Copy email address')}
-										onclick={copyEmail}><Copy size={17} /></button
-									>
-								</div>
-								<p class="copy-status" role="status">{copyStatus ? $t(copyStatus) : ''}</p>
-							{/if}
-						</div>
-					{/key}
+					</div>
 				</div>
 			</div>
-		</div>
-		<footer class="window-status">
-			<span><span class="status-dot"></span> {$t('portfolio')} / {$t(section)}</span>
-			<span
-				>© {new Date().getFullYear()} Pedro Kielblock ·
-				<a href="/privacy">{$t('Privacy')}</a></span
-			>
-			<span>UTF-8 <span class="status-separator">│</span> Markdown</span>
-		</footer>
-	</section>
-</main>
+			<Prompt command="cat README.md" />
+			<div class="result doc">
+				<p>
+					{$t(
+						'At ReThinkingWorks, I build assessment platforms, portals, and dashboards. I especially enjoy the backend: designing APIs, working with databases, and getting different systems to work together.'
+					)}
+				</p>
+				<p>
+					{$t(
+						'Outside work, I tinker with Linux, self-hosted services, and small tools for my own setup. I like understanding how things work and improving the things I use every day.'
+					)}
+				</p>
+			</div>
+			<Prompt command="ls" />
+			<nav class="result rows" aria-label={$t('Profile links')}>
+				{#each links as link}
+					<a class="k-row" href={link.href} {...link.href.startsWith('http') ? external : {}}>
+						<link.icon {...icon} /><span>{link.name}</span>
+						{#if link.href.startsWith('http')}<ArrowUpRight {...icon} />{/if}
+					</a>
+				{/each}
+			</nav>
+		{:else if section === 'about'}
+			<div class="result doc">
+				<h1><span class="accent" aria-hidden="true">#</span> {$t('A little about me')}</h1>
+				<p>{$t(DATA.summary)}</p>
+				<h2><span class="accent" aria-hidden="true">##</span> {$t('My toolkit')}</h2>
+				<p>{DATA.skills.join(' · ')}</p>
+				<p class="inline-links">
+					<a href={GitHub.url} {...external}>GitHub <ArrowUpRight {...icon} /></a>
+					<a href={LinkedIn.url} {...external}>LinkedIn <ArrowUpRight {...icon} /></a>
+				</p>
+			</div>
+		{:else if section === 'experience'}
+			<div class="result doc">
+				<h1><span class="accent" aria-hidden="true">#</span> {$t('Work experience')}</h1>
+				<p class="k-muted">{$t('Open a role for the details.')}</p>
+				{#each DATA.work as work, i}
+					<details class="entry" open={i === 0}>
+						<summary>
+							<ChevronRight {...icon} />
+							<span>
+								{$t(work.title)}
+								<span class="k-muted">{work.company} · {$t(work.start)} – {$t(work.end)}</span>
+							</span>
+						</summary>
+						<div class="entry-body">
+							<p>{$t(work.description)}</p>
+							<a href={work.href} {...external}>{$t('Visit company')} <ArrowUpRight {...icon} /></a>
+						</div>
+					</details>
+				{/each}
+			</div>
+		{:else if section === 'learning'}
+			<div class="result doc">
+				<h1><span class="accent" aria-hidden="true">#</span> {$t('Keep learning')}</h1>
+				<div class="k-seg" role="group" aria-label={$t('Learning categories')}>
+					{#each learningCategories as category}
+						<button
+							type="button"
+							aria-pressed={learning === category}
+							onclick={() => (learning = category)}>{$t(learningLabels[category])}</button
+						>
+					{/each}
+				</div>
+				<div class="rows">
+					{#if learning === 'education'}
+						{#each DATA.education as edu}
+							<a class="k-row" href={edu.href} {...external}>
+								<span class="k-row__text">
+									<span>{$t(edu.degree)}</span><span class="k-muted">{edu.school}</span>
+								</span>
+								<span class="row-meta">{edu.start}–{edu.end}</span>
+							</a>
+						{/each}
+					{:else if learning === 'certifications'}
+						{#each DATA.certificates as cert}
+							<a class="k-row" href={cert.href} {...external}>
+								<span class="k-row__text">
+									<span>{cert.name}</span>
+									<span class="k-muted">{cert.issuer} · {$t('Score')}: {cert.score}</span>
+								</span>
+								<span class="row-meta">{cert.date}</span>
+							</a>
+						{/each}
+					{:else}
+						{#each DATA.courses as course}
+							<div class="k-row">
+								<span class="k-row__text">
+									<a href={$locale === 'pt-BR' ? course.hrefPt : course.href} {...external}
+										>{$t(course.name)} <ArrowUpRight {...icon} /></a
+									>
+									<span class="k-muted"
+										>{course.provider} · {$t(course.duration)} · {$t('Certificate (PDF)')}</span
+									>
+									{#if course.courseUrl}
+										<a href={course.courseUrl} {...external}
+											>{$t('View course')} <ArrowUpRight {...icon} /></a
+										>
+									{/if}
+								</span>
+								<span class="row-meta">{course.date}</span>
+							</div>
+						{/each}
+					{/if}
+				</div>
+			</div>
+		{:else if section === 'journal'}
+			<div class="result doc">
+				{#if entry}
+					<h1><span class="accent" aria-hidden="true">#</span> {$t(entry.title)}</h1>
+					<p class="k-muted">{formatDate(entry.date, 'medium', $locale)}</p>
+					<article class="journal-content">
+						{#if $locale === 'pt-BR' && entry.slug === 'about-me'}<PortugueseAbout
+							/>{:else}<entry.content />{/if}
+					</article>
+				{:else}
+					<h1><span class="accent" aria-hidden="true">#</span> {$t('Journal')}</h1>
+					<div class="rows">
+						{#each entries as post}
+							<a class="k-row" href={'#journal/' + post.slug}>
+								<FileText {...icon} /><span class="k-row__text">{post.slug}.md</span>
+								<span class="row-meta">{formatDate(post.date, 'medium', $locale)}</span>
+							</a>
+						{:else}<p class="k-row k-muted">{$t('No entries yet.')}</p>{/each}
+					</div>
+				{/if}
+			</div>
+		{:else}
+			<div class="result doc">
+				<h1><span class="accent" aria-hidden="true">#</span> {$t('Contact')}</h1>
+				<p>{$t('For project inquiries or questions, email me.')}</p>
+				<p class="email">
+					<Mail {...icon} /><a href={Email.url}>{DATA.contact.email}</a><button
+						class="k-btn k-btn--ghost k-btn--sm k-btn--icon"
+						aria-label={$t('Copy email address')}
+						onclick={copyEmail}><Copy {...icon} /></button
+					>
+				</p>
+				<p class="k-muted" role="status">{copyStatus ? $t(copyStatus) : ''}</p>
+			</div>
+		{/if}
+		<Prompt />
+	</div>
+{/key}

@@ -2,7 +2,7 @@
 	import { locale, selectLanguage } from '#lib/i18n/index.js';
 </script>
 
-<div class="language-switch" role="group" aria-label={$locale === 'pt-BR' ? 'Idioma' : 'Language'}>
+<div class="k-seg" role="group" aria-label={$locale === 'pt-BR' ? 'Idioma' : 'Language'}>
 	<button
 		type="button"
 		lang="en"
